@@ -1,6 +1,6 @@
 import time
 import random
-from bo.Zone import *
+
 
 def menuDialogueStart():
     print("                                  ,'\\\n"
@@ -15,10 +15,12 @@ def menuDialogueStart():
           "       \    \ `.__,'|  |`-._    `|      |__| \/ |  `.__,'|  | |   |\n"
           "        \_.-'       |__|    `-._ |              '-.|     '-.| |   |\n"
           "                                `'                            '-._|\n")
-    print("Bien le bonjour! Bienvenue dans le monde magique des Pokémon! Mon nom est Chen! \n"
-          "Les gens souvent m'appellent le Prof Pokémon! Ce monde est peuplé de créatures du nom de Pokémon! \n"
-          "Pour certains, les Pokémon sont des animaux domestiques, pour d'autres, \n"
-          "ils sont un moyen de combattre. Pour ma part... L'étude des Pokémon est ma profession. \n")
+
+    print("Bien le bonjour ! Bienvenue dans le monde magique des Pokémon! Mon nom est Chen !\n"
+          "Les gens souvent m'appellent le Prof Pokémon ! Ce monde est peuplé de créatures du nom de Pokémon !\n"
+          "Pour certains, les Pokémon sont des animaux domestiques, pour d'autres,\n"
+          "ils sont un moyen de combattre. Pour ma part... L'étude des Pokémon est ma profession.\n")
+
     username = str(input("Tout d'abord, quel est ton nom ? "))
 
     print("OK! Ton nom est donc " + username + " ! \n"
@@ -164,9 +166,20 @@ def menuExplorer():
     print("Tu as choisi l'option : " + str(getChoice[menuChoice]))
 
     if (menuChoice == 1):
-        zone = ZonePokemon()
-        print("TTTTTTTTTTTTTTTESSSSSSSSSSSST")
-        print(zone.name)
+        randomZone = random.randrange(1, 4)
+        time.sleep(2)
+
+        if int(randomZone) == 1:
+            print("Vous entrez dans la plaine")
+
+        if int(randomZone) == 2:
+            print("Vous entrez dans la forêt")
+
+        if int(randomZone) == 3:
+            print("Vous entrez dans la plage")
+
+        if int(randomZone) == 4:
+            print("Vous entrez dans la grotte")
 
     if (menuChoice == 5):
         menuMain()
