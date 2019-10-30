@@ -1,6 +1,6 @@
 import time
 import random
-
+from bo.Zone import *
 
 def menuDialogueStart():
     print("                                  ,'\\\n"
@@ -164,20 +164,9 @@ def menuExplorer():
     print("Tu as choisi l'option : " + str(getChoice[menuChoice]))
 
     if (menuChoice == 1):
-        randomZone = random.randrange(1, 4)
-        time.sleep(2)
-
-        if int(randomZone) == 1:
-            print("Vous entrez dans la plaine")
-
-        if int(randomZone) == 2:
-            print("Vous entrez dans la forêt")
-
-        if int(randomZone) == 3:
-            print("Vous entrez dans la plage")
-
-        if int(randomZone) == 4:
-            print("Vous entrez dans la grotte")
+        zone = ZonePokemon()
+        print("TTTTTTTTTTTTTTTESSSSSSSSSSSST")
+        print(zone.name)
 
     if (menuChoice == 5):
         menuMain()

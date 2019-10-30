@@ -1,7 +1,7 @@
 import json
 import random
 
-JSON_ZONE_PATH = "../json/zone.json"
+JSON_ZONE_PATH = "./json/zone.json"
 NOMBRE_ZONES_JSON = 5
 ID_VILLE = NOMBRE_ZONES_JSON - 1
 
@@ -34,16 +34,3 @@ class ZonePokemon(Zone):
             self.type = data["zones"][self.id]["type"]
             self.name = data["zones"][self.id]["name"]
             self.list_item = data["zones"][self.id]["list_pokemon_id"]
-
-
-a = ZoneVille()
-print(a.type)
-print(a.name)
-print(a.list_item)
-
-print("\n \n")
-
-b = ZonePokemon()
-print(b.type)
-print(b.name)
-print(b.list_item)
