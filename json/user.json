@@ -1,13 +1,14 @@
 {
-  "username" : "Jean albert",
-  "money" : null,
-  "item_list" : [
-
-  ],
-  "poke_list" : [
-    43, 58
-  ],
-  "pokedex" : [
-    
-  ]
+    "username": "ert",
+    "monnaie": 500,
+    "item_list": [],
+    "poke_list": [
+        43
+    ],
+    "pokedex": [
+        147,
+        43,
+        58,
+        69
+    ]
 }
