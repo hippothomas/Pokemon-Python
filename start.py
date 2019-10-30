@@ -9,4 +9,3 @@ starter_arr = [starter1, starter2, starter3]
 
 menu.menuDialogueStart()
 starter = menu.menuStarter(starter_arr)
-print(starter)
