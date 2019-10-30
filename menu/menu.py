@@ -1,8 +1,10 @@
 import time
 import random
+from bo.Zone import *
 
 
 def menuDialogueStart():
+
     print("                                  ,'\\\n"
           "    _.----.        ____         ,'  _\   ___    ___     ____\n"
           "_,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.\n"
@@ -15,10 +17,12 @@ def menuDialogueStart():
           "       \    \ `.__,'|  |`-._    `|      |__| \/ |  `.__,'|  | |   |\n"
           "        \_.-'       |__|    `-._ |              '-.|     '-.| |   |\n"
           "                                `'                            '-._|\n")
+
     print("Bien le bonjour! Bienvenue dans le monde magique des Pokémon! Mon nom est Chen! \n"
           "Les gens souvent m'appellent le Prof Pokémon! Ce monde est peuplé de créatures du nom de Pokémon! \n"
           "Pour certains, les Pokémon sont des animaux domestiques, pour d'autres, \n"
           "ils sont un moyen de combattre. Pour ma part... L'étude des Pokémon est ma profession. \n")
+
     username = str(input("Tout d'abord, quel est ton nom ? "))
 
     print("OK! Ton nom est donc " + username + " ! \n"
@@ -31,6 +35,7 @@ def menuDialogueStart():
 
 
 def menuStarter(starter):
+
     print("╔══════════════════════════════╗")
     print("╠═══════ CHOIX STARTER ════════╣")
     print("╠══════════════════════════════╣")
@@ -39,6 +44,7 @@ def menuStarter(starter):
         print("║" + " " * 4 + str(i + 1) + " - " + starter[i].nom + " " * (22 - len(str(starter[i].nom))) + "║")
     print("║                              ║")
     print("╚══════════════════════════════╝\n")
+
     pokeChoose = False
     while not pokeChoose:
         try:
@@ -49,7 +55,7 @@ def menuStarter(starter):
                 pokeChoose = True
         except:
             print("\nVeuillez choisir un pokémon valide")
-    print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !\n")
+    print("\nSuper ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !\n")
     return starter[starterChoice - 1]
 
 def menuMain():
@@ -91,7 +97,7 @@ def menuMain():
                 menuChoose = True
         except:
             print("\nVeuillez choisir une action valide")
-    print("Tu as choisi l'option : " + str(getChoice[menuChoice]))
+    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
 
     if (menuChoice == 4):
 
@@ -101,7 +107,7 @@ def menuMain():
         getSubChoice = [subChoice1,
                      subChoice2]
 
-        print("╔══════════════════════════════╗")
+        print("\n╔══════════════════════════════╗")
         print("║                              ║")
         print("║   1 - Commencer a explorer   ║")
         print("║   2 - Retour au menu         ║")
@@ -118,12 +124,12 @@ def menuMain():
                     subChoose = True
             except:
                 print("\nVeuillez choisir une action valide")
-        print("Tu as choisi l'option : " + str(getSubChoice[subChoice]))
+        print("\nTu as choisi l'option : " + str(getSubChoice[subChoice - 1]))
 
         if (subChoice == 1):
             menuExplorer()
 
-        if (subChoice == 2):
+        elif (subChoice == 2):
             menuMain()
 
 def menuExplorer():
@@ -161,23 +167,17 @@ def menuExplorer():
                 menuChoose = True
         except:
             print("\nVeuillez choisir une action valide")
-    print("Tu as choisi l'option : " + str(getChoice[menuChoice]))
+    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
 
     if (menuChoice == 1):
-        randomZone = random.randrange(1, 4)
-        time.sleep(2)
+        zone = ZonePokemon()
+        print("\nVous arrivez dans la zone : " + str(zone.name) + "\n")
+        menuExplorer()
 
-        if int(randomZone) == 1:
-            print("Vous entrez dans la plaine")
+    elif (menuChoice == 2):
+        zone = ZoneVille()
+        print("\nVous arrivez dans la zone : " + str(zone.name) + "\n")
+        menuMain()
 
-        if int(randomZone) == 2:
-            print("Vous entrez dans la forêt")
-
-        if int(randomZone) == 3:
-            print("Vous entrez dans la plage")
-
-        if int(randomZone) == 4:
-            print("Vous entrez dans la grotte")
-
-    if (menuChoice == 5):
+    elif (menuChoice == 5):
         menuMain()
