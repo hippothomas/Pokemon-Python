@@ -44,14 +44,15 @@ def menuStarter(starter, player):
         except:
             print("Veuillez choisir un pokémon valide")
     print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !")
-    player.setPokeList(starter[starterChoice - 1])
+    player.addPokeList(starter[starterChoice - 1])
     return starter[starterChoice - 1]
 
-def menuEquipe(player):
+def getEquipe(player):
     print("╔═════════════════════════════════════════════════════════╗")
     print("╠═════════════════ Votre equipe de pokemon ═══════════════╣")
     print("╠═════════════════════════════════════════════════════════╣")
     for i in range(len(player.poke_list)):
         print("║ " + str(i+1) + " : {}".format("Nom : " + player.poke_list[i].nom + " | HP : " + str(player.poke_list[i].hp) + " | Niveau : " + str(player.poke_list[i].level)) + " " * (22 - len(player.poke_list[i].nom)) + "║")
     print("╚═════════════════════════════════════════════════════════╝\n")
+
 

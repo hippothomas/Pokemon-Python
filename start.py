@@ -11,4 +11,4 @@ starter_arr = [starter1, starter2, starter3]
 username = menu.menuDialogueStart()
 player = Player(username)
 starter = menu.menuStarter(starter_arr, player)
-menu.menuEquipe(player)
+menu.getEquipe(player)
