@@ -42,5 +42,5 @@ def menuStarter(starter):
                 pokeChoose = True
         except:
             print("Veuillez choisir un pokémon valide")
-    print("Super ! tu as choisis " + starter[starterChoice - 1].name + " prend en soin !")
+    print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !")
     return starter[starterChoice - 1]
