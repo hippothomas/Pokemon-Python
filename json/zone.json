@@ -1,0 +1,57 @@
+{
+  "zones": [
+    {
+      "id": 1,
+      "type": "zone_pokemon",
+      "name": "plaine",
+      "list_pokemon_id": [
+        1,
+        19,
+        77
+      ]
+    },
+    {
+      "id": 2,
+      "type": "zone_pokemon",
+      "name": "foret",
+      "list_pokemon_id": [
+        10,
+        13,
+        69
+      ]
+    },
+    {
+      "id": 3,
+      "type": "zone_pokemon",
+      "name": "plage",
+      "list_pokemon_id": [
+        54,
+        60,
+        72
+      ]
+    },
+    {
+      "id": 4,
+      "type": "zone_pokemon",
+      "name": "grotte",
+      "list_pokemon_id": [
+        41,
+        74,
+        109
+      ]
+    },
+    {
+      "id": 5,
+      "type": "ville",
+      "name": "La Joliverie",
+      "list_item": [
+        "pokeball",
+        "superball",
+        "hyperball",
+        "potion",
+        "superpotion",
+        "hyperpotion"
+      ]
+    }
+  ]
+}
