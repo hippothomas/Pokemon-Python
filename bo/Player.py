@@ -7,3 +7,6 @@ class Player:
     def __init__(self, username):
         self.username = username
 
+    def setPokeList(self, pokemon):
+        self.poke_list.append(pokemon)
+

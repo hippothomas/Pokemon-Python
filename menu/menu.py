@@ -1,5 +1,7 @@
 import time
 
+from bo.Player import Player
+
 
 def menuDialogueStart():
     print("                                  ,'\\\n"
@@ -23,13 +25,12 @@ def menuDialogueStart():
     print("OK! Ton nom est donc " + username + " ! \n"
           "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend! \n\n")
 
-    time.sleep(5)
+    time.sleep(2)
     print("Des Pokémon sauvages infestent les hautes herbes! \n"
           "Il te faut un Pokémon pour te protéger... Choisis en un ! \n")
-    time.sleep(5)
+    return username
 
-
-def menuStarter(starter):
+def menuStarter(starter, player):
     for i in range(len(starter)):
         print(str(i + 1) + " - " + starter[i].nom)
     pokeChoose = False
@@ -43,4 +44,14 @@ def menuStarter(starter):
         except:
             print("Veuillez choisir un pokémon valide")
     print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !")
+    player.setPokeList(starter[starterChoice - 1])
     return starter[starterChoice - 1]
+
+def menuEquipe(player):
+    print("╔═════════════════════════════════════════════════════════╗")
+    print("╠═════════════════ Votre equipe de pokemon ═══════════════╣")
+    print("╠═════════════════════════════════════════════════════════╣")
+    for i in range(len(player.poke_list)):
+        print("║ " + str(i+1) + " : {}".format("Nom : " + player.poke_list[i].nom + " | HP : " + str(player.poke_list[i].hp) + " | Niveau : " + str(player.poke_list[i].level)) + " " * (22 - len(player.poke_list[i].nom)) + "║")
+    print("╚═════════════════════════════════════════════════════════╝\n")
+
