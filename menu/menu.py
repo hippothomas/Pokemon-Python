@@ -28,9 +28,9 @@ def menuDialogueStart():
     username = str(input("Tout d'abord, quel est ton nom ? "))
 
     print("OK! Ton nom est donc " + username + " ! \n"
-                                               "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend !\n")
+          "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend !\n")
 
-    time.sleep(5)
+    time.sleep(3)
     print("Des Pokémon sauvages infestent les hautes herbes !\n"
           "Il te faut un Pokémon pour te protéger... Choisis en un !\n")
     return username
@@ -139,7 +139,7 @@ def menuMain(player):
         print("\nTu as choisi l'option : " + str(getSubChoice[subChoice]))
 
         if (subChoice == 1):
-            menuExplorer()
+            menuExplorer(player)
 
         elif (subChoice == 2):
             menuMain(player)
@@ -185,7 +185,7 @@ def menuExplorer(player):
     if (menuChoice == 1):
         zone = ZonePokemon()
         print("\nVous arrivez dans la zone : " + str(zone.name) + "\n")
-        menuExplorer()
+        menuExplorer(player)
 
     elif (menuChoice == 2):
         zone = ZoneVille()
