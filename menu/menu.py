@@ -125,7 +125,6 @@ def menuMain(player):
         print("║                              ║")
         print("╚══════════════════════════════╝\n")
 
-        subChoice = -1
         subChoose = False
         while not subChoose:
             try:
@@ -136,7 +135,7 @@ def menuMain(player):
                     subChoose = True
             except:
                 print("\nVeuillez choisir une action valide")
-        print("\nTu as choisi l'option : " + str(getSubChoice[subChoice]))
+        print("\nTu as choisi l'option : " + str(getSubChoice[subChoice - 1]) + "\n")
 
         if (subChoice == 1):
             menuExplorer(player)
