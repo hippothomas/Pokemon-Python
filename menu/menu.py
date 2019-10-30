@@ -48,8 +48,21 @@ def menuStarter(starter):
     print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !")
     return starter[starterChoice - 1]
 
-
 def menuInventaire(player):
+    print("╔==============================╗")
+    print("║========= INVENTAIRE =========║")
+    print("║==============================║")
+    print("║                              ║")
+    i = 0
+    for item in player.getInventaire():
+        item_name = Item(item[1]).name
+        print("║   " + str(i + 1) + " - " + str(item[0]) + "x" + item_name + "           ")
+        i += 1
+    print("║                              ║")
+    print("╚==============================╝\n")
+
+
+def menuInventaireCombat(player):
     print("╔==============================╗")
     print("║========= INVENTAIRE =========║")
     print("║==============================║")
