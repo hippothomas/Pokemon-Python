@@ -1,4 +1,5 @@
 import time
+import random
 
 
 def menuDialogueStart():
@@ -21,17 +22,23 @@ def menuDialogueStart():
     username = str(input("Tout d'abord, quel est ton nom ? "))
 
     print("OK! Ton nom est donc " + username + " ! \n"
-          "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend! \n\n")
+                                               "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend! \n\n")
 
-    time.sleep(5)
+    time.sleep(3)
     print("Des Pokémon sauvages infestent les hautes herbes! \n"
           "Il te faut un Pokémon pour te protéger... Choisis en un ! \n")
-    time.sleep(5)
+    time.sleep(3)
 
 
 def menuStarter(starter):
+    print("╔══════════════════════════════╗")
+    print("╠═══════ CHOIX STARTER ════════╣")
+    print("╠══════════════════════════════╣")
+    print("║                              ║")
     for i in range(len(starter)):
-        print(str(i + 1) + " - " + starter[i].nom)
+        print("║" + " " * 4 + str(i + 1) + " - " + starter[i].nom + " " * (22 - len(str(starter[i].nom))) + "║")
+    print("║                              ║")
+    print("╚══════════════════════════════╝\n")
     pokeChoose = False
     while not pokeChoose:
         try:
@@ -41,6 +48,136 @@ def menuStarter(starter):
             else:
                 pokeChoose = True
         except:
-            print("Veuillez choisir un pokémon valide")
-    print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !")
+            print("\nVeuillez choisir un pokémon valide")
+    print("Super ! tu as choisis " + starter[starterChoice - 1].nom + " prend en soin !\n")
     return starter[starterChoice - 1]
+
+def menuMain():
+
+    choice1 = "Inventaire"
+    choice2 = "Equipe"
+    choice3 = "Pokedex"
+    choice4 = "Explorer"
+    choice5 = "Sauvegarder"
+    choice6 = "Quitter le jeu"
+
+    getChoice = [choice1,
+                 choice2,
+                 choice3,
+                 choice4,
+                 choice5,
+                 choice6]
+
+    print("╔══════════════════════════════╗")
+    print("╠═══════ MENU PRINCIPAL ═══════╣")
+    print("╠══════════════════════════════╣")
+    print("║                              ║")
+    print("║   1 - Inventaire             ║")
+    print("║   2 - Equipe                 ║")
+    print("║   3 - Pokedex                ║")
+    print("║   4 - Explorer               ║")
+    print("║   5 - Sauvegarder            ║")
+    print("║   6 - Quitter le jeu         ║")
+    print("║                              ║")
+    print("╚══════════════════════════════╝\n")
+
+    menuChoose = False
+    while not menuChoose:
+        try:
+            menuChoice = int(input("Quel action voulez-vous faire : "))
+            if menuChoice > 6 or menuChoice <= 0:
+                raise Exception()
+            else:
+                menuChoose = True
+        except:
+            print("\nVeuillez choisir une action valide")
+    print("Tu as choisi l'option : " + str(getChoice[menuChoice]))
+
+    if (menuChoice == 4):
+
+        subChoice1 = "Commencer a explorer"
+        subChoice2 = "Retour au menu"
+
+        getSubChoice = [subChoice1,
+                     subChoice2]
+
+        print("╔══════════════════════════════╗")
+        print("║                              ║")
+        print("║   1 - Commencer a explorer   ║")
+        print("║   2 - Retour au menu         ║")
+        print("║                              ║")
+        print("╚══════════════════════════════╝\n")
+
+        subChoose = False
+        while not subChoose:
+            try:
+                subChoice = int(input("Quel action voulez-vous faire : "))
+                if subChoice > 2 or subChoice <= 0:
+                    raise Exception()
+                else:
+                    subChoose = True
+            except:
+                print("\nVeuillez choisir une action valide")
+        print("Tu as choisi l'option : " + str(getSubChoice[subChoice]))
+
+        if (subChoice == 1):
+            menuExplorer()
+
+        if (subChoice == 2):
+            menuMain()
+
+def menuExplorer():
+
+    choice1 = "Changer de zone"
+    choice2 = "Aller en ville"
+    choice3 = "Chasser des pokémons"
+    choice4 = "Combattre un dresseur"
+    choice5 = "Menu principal"
+
+    getChoice = [choice1,
+                 choice2,
+                 choice3,
+                 choice4]
+
+    print("╔══════════════════════════════╗")
+    print("╠══════ MENU EXPLORATION ══════╣")
+    print("╠══════════════════════════════╣")
+    print("║                              ║")
+    print("║   1 - Changer de zone        ║")
+    print("║   2 - Aller en Ville         ║")
+    print("║   3 - Chasser des pokémons   ║")
+    print("║   4 - Combattre un dresseur  ║")
+    print("║   5 - Menu principal         ║")
+    print("║                              ║")
+    print("╚══════════════════════════════╝\n")
+
+    menuChoose = False
+    while not menuChoose:
+        try:
+            menuChoice = int(input("Quel action voulez-vous faire : "))
+            if menuChoice > 5 or menuChoice <= 0:
+                raise Exception()
+            else:
+                menuChoose = True
+        except:
+            print("\nVeuillez choisir une action valide")
+    print("Tu as choisi l'option : " + str(getChoice[menuChoice]))
+
+    if (menuChoice == 1):
+        randomZone = random.randrange(1, 4)
+        time.sleep(2)
+
+        if int(randomZone) == 1:
+            print("Vous entrez dans la plaine")
+
+        if int(randomZone) == 2:
+            print("Vous entrez dans la forêt")
+
+        if int(randomZone) == 3:
+            print("Vous entrez dans la plage")
+
+        if int(randomZone) == 4:
+            print("Vous entrez dans la grotte")
+
+    if (menuChoice == 5):
+        menuMain()
