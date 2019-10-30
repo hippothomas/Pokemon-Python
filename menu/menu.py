@@ -20,19 +20,19 @@ def menuDialogueStart():
           "        \_.-'       |__|    `-._ |              '-.|     '-.| |   |\n"
           "                                `'                            '-._|\n")
 
-    print("Bien le bonjour! Bienvenue dans le monde magique des Pokémon! Mon nom est Chen! \n"
-          "Les gens souvent m'appellent le Prof Pokémon! Ce monde est peuplé de créatures du nom de Pokémon! \n"
-          "Pour certains, les Pokémon sont des animaux domestiques, pour d'autres, \n"
-          "ils sont un moyen de combattre. Pour ma part... L'étude des Pokémon est ma profession. \n")
+    print("Bien le bonjour ! Bienvenue dans le monde magique des Pokémon! Mon nom est Chen !\n"
+          "Les gens souvent m'appellent le Prof Pokémon ! Ce monde est peuplé de créatures du nom de Pokémon !\n"
+          "Pour certains, les Pokémon sont des animaux domestiques, pour d'autres,\n"
+          "ils sont un moyen de combattre. Pour ma part... L'étude des Pokémon est ma profession.\n")
 
     username = str(input("Tout d'abord, quel est ton nom ? "))
 
     print("OK! Ton nom est donc " + username + " ! \n"
-                                               "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend! \n\n")
+                                               "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend !\n")
 
     time.sleep(5)
-    print("Des Pokémon sauvages infestent les hautes herbes! \n"
-          "Il te faut un Pokémon pour te protéger... Choisis en un ! \n")
+    print("Des Pokémon sauvages infestent les hautes herbes !\n"
+          "Il te faut un Pokémon pour te protéger... Choisis en un !\n")
     return username
 
 
@@ -62,7 +62,7 @@ def menuStarter(starter, player):
     player.addPokedex(starter[starterChoice - 1])
     return starter[starterChoice - 1]
 
-def menuMain():
+def menuMain(player):
 
     choice1 = "Inventaire"
     choice2 = "Equipe"
@@ -103,6 +103,13 @@ def menuMain():
             print("\nVeuillez choisir une action valide")
     print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
 
+    if (menuChoice == 2):
+        getEquipe(player)
+        menuMain(player)
+
+    if (menuChoice == 3):
+        getPokedex(player)
+
     if (menuChoice == 4):
 
         subChoice1 = "Commencer a explorer"
@@ -118,6 +125,7 @@ def menuMain():
         print("║                              ║")
         print("╚══════════════════════════════╝\n")
 
+        subChoice = -1
         subChoose = False
         while not subChoose:
             try:
@@ -128,15 +136,15 @@ def menuMain():
                     subChoose = True
             except:
                 print("\nVeuillez choisir une action valide")
-        print("\nTu as choisi l'option : " + str(getSubChoice[subChoice - 1]))
+        print("\nTu as choisi l'option : " + str(getSubChoice[subChoice]))
 
         if (subChoice == 1):
             menuExplorer()
 
         elif (subChoice == 2):
-            menuMain()
+            menuMain(player)
 
-def menuExplorer():
+def menuExplorer(player):
 
     choice1 = "Changer de zone"
     choice2 = "Aller en ville"
@@ -147,9 +155,10 @@ def menuExplorer():
     getChoice = [choice1,
                  choice2,
                  choice3,
-                 choice4]
+                 choice4,
+                 choice5]
 
-    print("╔══════════════════════════════╗")
+    print("\n╔══════════════════════════════╗")
     print("╠══════ MENU EXPLORATION ══════╣")
     print("╠══════════════════════════════╣")
     print("║                              ║")
@@ -181,12 +190,13 @@ def menuExplorer():
     elif (menuChoice == 2):
         zone = ZoneVille()
         print("\nVous arrivez dans la zone : " + str(zone.name) + "\n")
-        menuMain()
+        menuMain(player)
 
     elif (menuChoice == 5):
-        menuMain()
+        menuMain(player)
 
 def getEquipe(player):
+
     print("╔═════════════════════════════════════════════════════════╗")
     print("╠═════════════════ Votre equipe de pokemon ═══════════════╣")
     print("╠═════════════════════════════════════════════════════════╣")
@@ -194,18 +204,28 @@ def getEquipe(player):
         print("║ " + str(i+1) + " : {}".format("Nom : " + player.poke_list[i].nom + " | HP : " + str(player.poke_list[i].hp) + " | Niveau : " + str(player.poke_list[i].level)) + " " * (22 - len(player.poke_list[i].nom)) + "║")
     print("╚═════════════════════════════════════════════════════════╝\n")
 
+    try:
+        int(input(""))
+    except:
+        pass
+
+
+
+
 def getPokedex(player):
+
     displayPokedex(1, 21, player)
     pageChoose = False
     while not pageChoose:
         try:
-            page = int(input("Page 1|2|3|4|5|6|7|8 -- Quitter 0"))
+            print("Page 1|2|3|4|5|6|7|8\nQuitter 0")
+            page = int(input("Choisir une option : "))
             if page > 3 or page < 0:
                 raise Exception()
         except:
             print("Veuillez choisir une page valide")
         if page == 0:
-            pageChoose = True
+            menuMain(player)
         elif page == 1:
             displayPokedex(1, 21, player)
         elif page == 2:
@@ -225,17 +245,20 @@ def getPokedex(player):
 
 
 def displayPokedex(firstNum, lastNum, player):
+
     print("╔══════════════════════════════╗")
     print("╠════════ Votre pokedex ═══════╣")
     print("╠══════════════════════════════╣")
     for i in range(firstNum, lastNum):
+        pokemon = pokemonIsFound(player.pokedex, i)
         print("║ " + str(i) + " : {}".format(
-            "Nom : " + pokemonIsFound(player.pokedex, i)) + " " * (
-                          18 - len(str(i)) + len(pokemonIsFound(player.pokedex, i))) + "║")
+            "Nom : " + pokemon + " " * (
+                          20 - (len(str(i)) + len(pokemon))) + "║"))
     print("╚══════════════════════════════╝\n")
 
 
 def pokemonIsFound(pokedex, index):
+
     for i in range(len(pokedex)):
         if pokedex[i].id == index:
             return str(pokedex[i].nom)
