@@ -4,6 +4,7 @@ class Player:
     item_list = []
     pokedex = []
     monnaie = 0
+    zone = ""
 
     def __init__(self, username):
         self.username = username
