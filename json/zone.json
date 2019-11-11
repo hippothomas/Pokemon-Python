@@ -8,6 +8,26 @@
         1,
         19,
         77
+      ],
+      "dresseurs": [
+        {
+         "id": 1,
+         "name": "Plainiste1",
+         "list_pokemon_dresseur": [
+           18,
+           20,
+           52
+         ]
+        },
+        {
+         "id": 2,
+         "name": "Plainiste2",
+         "list_pokemon_dresseur": [
+           77,
+           83,
+           143
+         ]
+        }
       ]
     },
     {
@@ -18,6 +38,26 @@
         10,
         13,
         69
+      ],
+      "dresseurs": [
+        {
+         "id": 1,
+         "name": "Forestier1",
+         "list_pokemon_dresseur": [
+           1,
+           2,
+           3
+         ]
+        },
+        {
+         "id": 2,
+         "name": "Forestier2",
+         "list_pokemon_dresseur": [
+           15,
+           43,
+           127
+         ]
+        }
       ]
     },
     {
@@ -28,6 +68,26 @@
         54,
         60,
         72
+      ],
+      "dresseurs": [
+        {
+         "id": 1,
+         "name": "Plagiste1",
+         "list_pokemon_dresseur": [
+           1,
+           2,
+           3
+         ]
+        },
+        {
+         "id": 2,
+         "name": "Plagiste2",
+         "list_pokemon_dresseur": [
+           138,
+           129,
+           130
+         ]
+        }
       ]
     },
     {
@@ -38,6 +98,26 @@
         41,
         74,
         109
+      ],
+      "dresseurs": [
+        {
+         "id": 1,
+         "name": "Homme des grottes1",
+         "list_pokemon_dresseur": [
+           76,
+           68,
+           65
+         ]
+        },
+        {
+         "id": 2,
+         "name": "Homme des grottes2",
+         "list_pokemon_dresseur": [
+           39,
+           50,
+           79
+         ]
+        }
       ]
     },
     {
