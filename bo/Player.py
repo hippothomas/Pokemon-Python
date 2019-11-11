@@ -44,3 +44,18 @@ class Player:
     # Permet de supprimer un item de la l'inventaire
     def removeFromInventaire(self, id):
         self.item_list.remove(self.item_list[id])
+
+    def hasPokeAvailable(self):
+        poke_available = False
+        for pokemon in self.poke_list:
+            if pokemon.hp > 0:
+                poke_available = True
+        return poke_available
+
+    def getFirstPokeAvailable(self):
+        poke_return = None
+        for pokemon in self.poke_list:
+            if pokemon.hp > 0:
+                poke_return = pokemon
+                break
+        return poke_return
