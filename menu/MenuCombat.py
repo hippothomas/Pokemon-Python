@@ -13,52 +13,6 @@ class MenuCombat:
     def __init__(self):
         None
 
-def menuCombat(player):
-    choice1 = "Combattre"
-    choice2 = "Inventaire"
-    choice3 = "Changer de pokémon"
-    choice4 = "Fuir"
-
-    getChoice = [choice1,
-                 choice2,
-                 choice3,
-                 choice4]
-
-    print("\n╔══════════════════════════════╗")
-    print("╠═══════ MENU COMBATTRE ═══════╣")
-    print("╠══════════════════════════════╣")
-    print("║                              ║")
-    print("║   1 - Combattre              ║")
-    print("║   2 - Inventaire             ║")
-    print("║   3 - Changer de pokémon     ║")
-    print("║   4 - Fuir                   ║")
-    print("║                              ║")
-    print("╚══════════════════════════════╝\n")
-
-    menuChoose = False
-    while not menuChoose:
-        try:
-            menuChoice = int(input("Quel action voulez-vous faire : "))
-            if menuChoice > 4 or menuChoice <= 0:
-                raise Exception()
-            else:
-                menuChoose = True
-        except:
-            print("\nVeuillez choisir une action valide")
-    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
-
-    if (menuChoice == 1):
-        print("lul")
-
-    elif (menuChoice == 2):
-        menuInventaireCombat(player)
-
-    elif (menuChoice == 3):
-        print("lul")
-
-    elif (menuChoice == 4):
-        MenuMain.menuMain(player)
-
 
 def menuInventaireCombat(player):
     print("\n╔══════════════════════════════╗")
@@ -131,8 +85,7 @@ def menuInventaireCombat(player):
             else:
                 print("Erreur ! L'item demandé n'existe pas !")
 
-
-
+# Menu de combat
 def combat(player: Player, adversaire):
     if isinstance(adversaire, Pokemon):
         poke_fight = player.getFirstPokeAvailable()
@@ -181,6 +134,9 @@ def combat(player: Player, adversaire):
 
             if adversaire.hp == 0:
                 print("Vous avez battu " + adversaire.nom + " de niveau " + str(adversaire.level))
+                earned_xp = adversaire.getXpWin()
+                print("Vous avez gagné " + str(earned_xp) + " xp")
+                poke_fight.addXp(earned_xp)
                 break
             # Si pas d'erreur dans le choix du joueur l'adversaire joue
             if not error_opt:

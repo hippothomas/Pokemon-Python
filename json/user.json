@@ -5,20 +5,23 @@
     "poke_list": [
         {
             "id": 147,
-            "hp": 0,
+            "hp": 8,
             "level": 5,
+            "xp": 135,
             "evolution": 1
         },
         {
             "id": 4,
             "hp": 8,
             "level": 5,
+            "xp": 135,
             "evolution": 1
         },
         {
             "id": 1,
             "hp": 8,
             "level": 5,
+            "xp": 135,
             "evolution": 1
         }
     ],

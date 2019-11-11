@@ -9,7 +9,9 @@ class Pokemon:
     hp = 0
     hp_max = 0
     level = 0
+    xp = 0
     evolution = 0
+    base_xp = 0
     competence = []
 
     apiUrl = "https://pokeapi.co/api/v2/"
@@ -22,6 +24,8 @@ class Pokemon:
         self.nom = str(pokemon_json['name']).capitalize()
         self.evolution = 1
         self.level = 5
+        self.xp = 135
+        self.base_xp = pokemon_json['base_experience']
         self.hp_max = self.getHpByLvl()
         self.hp = self.hp_max
         self.competence = []
@@ -52,6 +56,27 @@ class Pokemon:
         if level is not None:
             self.level = level
         self.hp_max = self.getHpByLvl()
+
+    # ajoute de l'xp au pokemon si le montant d'xp est supérieur à celui nécessaire lvl up
+    def addXp(self, amount):
+        if self.xp == 0:
+            self.xp = self.getXpByLvl(False)
+        self.xp += amount
+        if self.xp >= self.getXpByLvl():
+            self.addLevel()
+            print("Vous passez niveau " + str(self.level))
+
+    # Retourne l'xp nécessaire pour le prochain niveau
+    def getXpByLvl(self, next_lvl=True):
+        if next_lvl:
+            lvl = self.level+1
+        else:
+            lvl = self.level
+        return round((6 / 5 * (lvl ** 3)) - 15 * (lvl ** 2) + 100 * lvl - 140)
+
+    # Retourne l'xp gagné en tuant le pokemon
+    def getXpWin(self):
+        return round((self.base_xp * self.level * 1.2) / 7)
 
     # Charge les compétences d'un pokémon
     def loadComp(self, poke_json):

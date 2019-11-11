@@ -13,6 +13,7 @@ def loadPlayer():
         for pokemon in pokelist:
             poke_add = Pokemon(pokemon['id'])
             poke_add.addLevel(pokemon['level'])
+            poke_add.xp = pokemon['xp']
             poke_add.evolution = pokemon['evolution']
             poke_add.hp = pokemon['hp']
             player.addPokeList(poke_add)
@@ -35,6 +36,7 @@ def savePlayer(player):
             "id": pokemon.id,
             "hp": pokemon.hp,
             "level": pokemon.level,
+            "xp": pokemon.xp,
             "evolution": pokemon.evolution
         }
         data_player["poke_list"].append(poke_info)
