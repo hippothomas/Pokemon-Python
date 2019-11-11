@@ -51,7 +51,6 @@ class ZonePokemon(Zone):
             rand = random.randrange(nbPokemonZone)
             randomPoke = data["zones"][self.id]["list_pokemon_id"][rand]
             pokemon = Pokemon(randomPoke)
-            print(pokemon.nom)
         return pokemon
 
     def getRandomDresseurByZone(self):
@@ -63,8 +62,4 @@ class ZonePokemon(Zone):
             dresseur = Dresseur(randomDresseur["name"])
             for poke in randomDresseur["list_pokemon_dresseur"]:
                 dresseur.addPokeList(poke)
-            print(dresseur.name)
         return dresseur
-
-a = ZonePokemon()
-a.getEvent()
