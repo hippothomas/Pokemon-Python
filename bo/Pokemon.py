@@ -19,7 +19,7 @@ class Pokemon:
     def __init__(self, id_poke, load_comp=True):
         self.id = id_poke
         pokemon_json = requests.get(self.getPokemon + str(self.id)).json()
-        self.nom = pokemon_json['name']
+        self.nom = str(pokemon_json['name']).capitalize()
         self.evolution = 1
         self.level = 5
         self.hp_max = self.getHpByLvl()
@@ -56,6 +56,7 @@ class Pokemon:
     # Charge les compétences d'un pokémon
     def loadComp(self, poke_json):
         moves = poke_json['moves']
+        print(self)
         for comp in moves:
             if len(self.competence) == 4:
                 break
@@ -65,4 +66,7 @@ class Pokemon:
                 if competence.power > 0 and len(self.competence) < 4:
                     self.competence.append(competence)
 
+    # Retourne le nombre de dégâts que fait la compétence
+    def getDmg(self, comp_atk: Competence):
+        return round(comp_atk.power/100 * self.level)
 

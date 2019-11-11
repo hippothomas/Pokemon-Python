@@ -17,6 +17,7 @@ class Player:
         self.poke_list.append(pokemon)
 
     def addPokedex(self, pokemon):
+        # TODO Check que le pokemon est pas déjà dans le pokedex
         self.pokedex.append(pokemon)
 
     def getInventaire(self):
