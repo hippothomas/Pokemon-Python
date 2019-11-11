@@ -3,7 +3,7 @@ import random
 from bo.Pokemon import Pokemon
 from bo.Dresseur import Dresseur
 
-JSON_ZONE_PATH = "../json/zone.json"
+JSON_ZONE_PATH = "./json/zone.json"
 NOMBRE_ZONES_JSON = 5
 ID_VILLE = NOMBRE_ZONES_JSON - 1
 
@@ -46,6 +46,7 @@ class ZonePokemon(Zone):
             pokemon = Pokemon(randomPoke)
             print("\nUn pokémon sauvage apparait !\n")
             print("C'est un " + pokemon.nom + " !")
+            return pokemon
 
     def getRandomDresseurByZone(self):
         with open(JSON_ZONE_PATH) as jsonFile:
@@ -57,3 +58,4 @@ class ZonePokemon(Zone):
             for poke in randomDresseur["list_pokemon_dresseur"]:
                 dresseur.addPokeList(poke)
             print("\n Vous entrez en combat contre le dresseur " + dresseur.name + " !")
+            return dresseur
