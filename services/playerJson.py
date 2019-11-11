@@ -10,11 +10,14 @@ def loadPlayer():
         player = Player(data["username"])
         pokelist = data["poke_list"]  # list d'id des pokemons du player
         pokedex = data["pokedex"]  # list d'id du pokedex
-        for poke_id in pokelist:
-            poke_add = Pokemon(poke_id)
+        for pokemon in pokelist:
+            poke_add = Pokemon(pokemon['id'])
+            poke_add.addLevel(pokemon['level'])
+            poke_add.evolution = pokemon['evolution']
+            poke_add.hp = pokemon['hp']
             player.addPokeList(poke_add)
         for poke_id in pokedex:
-            poke_add = Pokemon(poke_id)
+            poke_add = Pokemon(poke_id, False)
             player.addPokedex(poke_add)
     return player
 
@@ -27,8 +30,14 @@ def savePlayer(player):
         "poke_list": [],
         "pokedex": []
     }
-    for poke_id in player.poke_list:
-        data_player["poke_list"].append(poke_id.id)
+    for pokemon in player.poke_list:
+        poke_info = {
+            "id": pokemon.id,
+            "hp": pokemon.hp,
+            "level": pokemon.level,
+            "evolution": pokemon.evolution
+        }
+        data_player["poke_list"].append(poke_info)
     for pokedex_id in player.pokedex:
         data_player["pokedex"].append(pokedex_id.id)
     with open("./json/user.json", 'w') as outfile:
