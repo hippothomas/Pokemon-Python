@@ -37,13 +37,6 @@ class ZonePokemon(Zone):
             self.name = data["zones"][self.id]["name"]
             self.list_item = data["zones"][self.id]["list_pokemon_id"]
 
-    def getEvent(self):
-        nb = random.randrange(5)
-        if nb < 3:
-            return self.getRandomPokemonByZone()
-        else:
-            return self.getRandomDresseurByZone()
-
     def getRandomPokemonByZone(self):
         with open(JSON_ZONE_PATH) as jsonFile:
             data = json.load(jsonFile)
@@ -51,7 +44,8 @@ class ZonePokemon(Zone):
             rand = random.randrange(nbPokemonZone)
             randomPoke = data["zones"][self.id]["list_pokemon_id"][rand]
             pokemon = Pokemon(randomPoke)
-        return pokemon
+            print("\nUn pokémon sauvage apparait !\n")
+            print("C'est un " + pokemon.nom + " !")
 
     def getRandomDresseurByZone(self):
         with open(JSON_ZONE_PATH) as jsonFile:
@@ -62,4 +56,4 @@ class ZonePokemon(Zone):
             dresseur = Dresseur(randomDresseur["name"])
             for poke in randomDresseur["list_pokemon_dresseur"]:
                 dresseur.addPokeList(poke)
-        return dresseur
+            print("\n Vous entrez en combat contre le dresseur " + dresseur.name + " !")
