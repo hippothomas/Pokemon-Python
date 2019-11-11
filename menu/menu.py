@@ -6,7 +6,6 @@ from bo.Player import Player
 
 
 def menuDialogueStart():
-
     print("                                  ,'\\\n"
           "    _.----.        ____         ,'  _\   ___    ___     ____\n"
           "_,-'       `.     |    |  /`.   \,-'    |   \  /   |   |    \  |`.\n"
@@ -28,7 +27,7 @@ def menuDialogueStart():
     username = str(input("Tout d'abord, quel est ton nom ? "))
 
     print("OK! Ton nom est donc " + username + " ! \n"
-          "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend !\n")
+                                               "Un tout nouveau monde de rêves, d'aventures et de Pokémon t'attend !\n")
 
     time.sleep(3)
     print("Des Pokémon sauvages infestent les hautes herbes !\n"
@@ -37,7 +36,6 @@ def menuDialogueStart():
 
 
 def menuStarter(starter, player):
-
     print("╔══════════════════════════════╗")
     print("╠═══════ CHOIX STARTER ════════╣")
     print("╠══════════════════════════════╣")
@@ -63,7 +61,6 @@ def menuStarter(starter, player):
     return starter[starterChoice - 1]
 
 def menuMain(player):
-
     choice1 = "Inventaire"
     choice2 = "Equipe"
     choice3 = "Pokedex"
@@ -116,7 +113,7 @@ def menuMain(player):
         subChoice2 = "Retour au menu"
 
         getSubChoice = [subChoice1,
-                     subChoice2]
+                        subChoice2]
 
         print("\n╔══════════════════════════════╗")
         print("║                              ║")
@@ -144,7 +141,6 @@ def menuMain(player):
             menuMain(player)
 
 def menuExplorer(player):
-
     choice1 = "Changer de zone"
     choice2 = "Aller en ville"
     choice3 = "Chasser des pokémons"
@@ -194,13 +190,15 @@ def menuExplorer(player):
     elif (menuChoice == 5):
         menuMain(player)
 
-def getEquipe(player):
 
+def getEquipe(player):
     print("╔═════════════════════════════════════════════════════════╗")
     print("╠═════════════════ Votre equipe de pokemon ═══════════════╣")
     print("╠═════════════════════════════════════════════════════════╣")
     for i in range(len(player.poke_list)):
-        print("║ " + str(i+1) + " : {}".format("Nom : " + player.poke_list[i].nom + " | HP : " + str(player.poke_list[i].hp) + " | Niveau : " + str(player.poke_list[i].level)) + " " * (22 - len(player.poke_list[i].nom)) + "║")
+        print("║ " + str(i + 1) + " : {}".format(
+            "Nom : " + player.poke_list[i].nom + " | HP : " + str(player.poke_list[i].hp) + " | Niveau : " + str(
+                player.poke_list[i].level)) + " " * (22 - len(player.poke_list[i].nom)) + "║")
     print("╚═════════════════════════════════════════════════════════╝\n")
 
     try:
@@ -209,10 +207,7 @@ def getEquipe(player):
         pass
 
 
-
-
 def getPokedex(player):
-
     displayPokedex(1, 21, player)
     pageChoose = False
     while not pageChoose:
@@ -244,7 +239,6 @@ def getPokedex(player):
 
 
 def displayPokedex(firstNum, lastNum, player):
-
     print("╔══════════════════════════════╗")
     print("╠════════ Votre pokedex ═══════╣")
     print("╠══════════════════════════════╣")
@@ -252,12 +246,11 @@ def displayPokedex(firstNum, lastNum, player):
         pokemon = pokemonIsFound(player.pokedex, i)
         print("║ " + str(i) + " : {}".format(
             "Nom : " + pokemon + " " * (
-                          20 - (len(str(i)) + len(pokemon))) + "║"))
+                    20 - (len(str(i)) + len(pokemon))) + "║"))
     print("╚══════════════════════════════╝\n")
 
 
 def pokemonIsFound(pokedex, index):
-
     for i in range(len(pokedex)):
         if pokedex[i].id == index:
             return str(pokedex[i].nom)
