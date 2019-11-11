@@ -281,6 +281,95 @@ def menuExplorer(player):
 
     elif (menuChoice == 5):
         menuMain(player)
+        
+def menuVille(player):
+
+    choice1 = "Soigner ses pokémons"
+    choice2 = "Aller à la boutique"
+    choice3 = "Menu explorer"
+
+    getChoice = [choice1,
+                 choice2,
+                 choice3]
+
+    print("\n╔══════════════════════════════╗")
+    print("╠═════════ MENU VILLE ═════════╣")
+    print("╠══════════════════════════════╣")
+    print("║                              ║")
+    print("║   1 - Soigner ses pokémons   ║")
+    print("║   2 - Aller à la boutique    ║")
+    print("║   3 - Menu explorer          ║")
+    print("║                              ║")
+    print("╚══════════════════════════════╝\n")
+
+    menuChoose = False
+    while not menuChoose:
+        try:
+            menuChoice = int(input("Quel action voulez-vous faire : "))
+            if menuChoice > 2 or menuChoice <= 0:
+                raise Exception()
+            else:
+                menuChoose = True
+        except:
+            print("\nVeuillez choisir une action valide")
+    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
+
+    if (menuChoice == 1):
+        print("\nVos pokémons ont été soignés.\n")
+        menuExplorer(player)
+
+    elif (menuChoice == 2):
+        print("\nBienvenue dans la boutique !\n")
+
+    elif (menuChoice == 3):
+        menuExplorer(player)
+
+def menuCombat(player):
+
+    choice1 = "Combattre"
+    choice2 = "Inventaire"
+    choice3 = "Changer de pokémon"
+    choice4 = "Fuir"
+
+    getChoice = [choice1,
+                 choice2,
+                 choice3,
+                 choice4]
+
+    print("\n╔══════════════════════════════╗")
+    print("╠═══════ MENU COMBATTRE ═══════╣")
+    print("╠══════════════════════════════╣")
+    print("║                              ║")
+    print("║   1 - Combattre              ║")
+    print("║   2 - Inventaire             ║")
+    print("║   3 - Changer de pokémon     ║")
+    print("║   4 - Fuir                   ║")
+    print("║                              ║")
+    print("╚══════════════════════════════╝\n")
+
+    menuChoose = False
+    while not menuChoose:
+        try:
+            menuChoice = int(input("Quel action voulez-vous faire : "))
+            if menuChoice > 4 or menuChoice <= 0:
+                raise Exception()
+            else:
+                menuChoose = True
+        except:
+            print("\nVeuillez choisir une action valide")
+    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
+
+    if (menuChoice == 1):
+        print("lul")
+
+    elif (menuChoice == 2):
+        print("lul")
+
+    elif (menuChoice == 3):
+        print("lul")
+
+    elif (menuChoice == 4):
+        print("lul")
 
 def getEquipe(player):
 
@@ -295,9 +384,6 @@ def getEquipe(player):
         int(input(""))
     except:
         pass
-
-
-
 
 def getPokedex(player):
 
