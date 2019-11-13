@@ -8,7 +8,7 @@ class MenuExplorer:
     def __init__(self):
         None
 
-def menuExplorer(player):
+def menuExplorer(player, zone):
     choice1 = "Changer de zone"
     choice2 = "Aller en ville"
     choice3 = "Chasser des pokémons"
@@ -48,7 +48,7 @@ def menuExplorer(player):
     if (menuChoice == 1):
         zone = ZonePokemon()
         print("\nVous arrivez dans la zone : " + str(zone.name) + "\n")
-        menuExplorer(player)
+        menuExplorer(player, zone)
 
     elif (menuChoice == 2):
         zone = ZoneVille()
@@ -56,16 +56,14 @@ def menuExplorer(player):
         MenuMain.menuMain(player)
 
     elif (menuChoice == 3):
-        zone = ZonePokemon()
         randomPokemon = zone.getRandomPokemonByZone()
         MenuCombat.combat(player, randomPokemon)
-        menuExplorer(player)
+        menuExplorer(player, zone)
 
     elif (menuChoice == 4):
-        zone = ZonePokemon()
         randomDresseur = zone.getRandomDresseurByZone()
         MenuCombat.combat(player, randomDresseur)
-        menuExplorer(player)
+        menuExplorer(player, zone)
 
     elif (menuChoice == 5):
         MenuMain.menuMain(player)

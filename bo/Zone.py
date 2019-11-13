@@ -35,7 +35,7 @@ class ZonePokemon(Zone):
             data = json.load(jsonFile)
             self.type = data["zones"][self.id]["type"]
             self.name = data["zones"][self.id]["name"]
-            self.list_item = data["zones"][self.id]["list_pokemon_id"]
+            self.list_pokemon_id = data["zones"][self.id]["list_pokemon_id"]
 
     def getRandomPokemonByZone(self):
         with open(JSON_ZONE_PATH) as jsonFile:
