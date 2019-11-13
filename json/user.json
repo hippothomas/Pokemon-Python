@@ -1,34 +1,9 @@
 {
-    "username": "player_name",
+    "username": "h",
     "monnaie": 500,
     "item_list": [],
-    "poke_list": [
-        {
-            "id": 147,
-            "hp": 8,
-            "level": 5,
-            "xp": 135,
-            "evolution": 1
-        },
-        {
-            "id": 4,
-            "hp": 8,
-            "level": 5,
-            "xp": 135,
-            "evolution": 1
-        },
-        {
-            "id": 1,
-            "hp": 8,
-            "level": 5,
-            "xp": 135,
-            "evolution": 1
-        }
-    ],
+    "poke_list": [],
     "pokedex": [
-        147,
-        43,
-        58,
-        69
+        147
     ]
 }

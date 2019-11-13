@@ -57,12 +57,10 @@ def menuExplorer(player):
     elif (menuChoice == 3):
         zone = ZonePokemon()
         zone.getRandomPokemonByZone()
-        MenuCombat.menuCombat(player)
 
     elif (menuChoice == 4):
         zone = ZonePokemon()
         zone.getRandomDresseurByZone()
-        MenuCombat.menuCombat(player)
 
     elif (menuChoice == 5):
         MenuMain.menuMain(player)

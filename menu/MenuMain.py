@@ -1,7 +1,11 @@
+import sys
+import time
+
 from menu import MenuInventaire
 from menu import MenuEquipe
 from menu import MenuPokedex
 from menu import MenuExplorer
+from services import playerJson
 
 class MenuMain:
 
@@ -60,3 +64,19 @@ def menuMain(player):
 
     elif (menuChoice == 4):
         MenuExplorer.menuExplorer(player)
+
+    elif (menuChoice == 5):
+        print("\nSauvegarde de la partie ...")
+        time.sleep(3)
+        playerJson.savePlayer(player)
+        print("\nPartie sauvegardée !\n")
+        menuMain(player)
+
+    elif (menuChoice == 6):
+        exitChoice = input('\033[93m' + "Voulez-vous vraiment quitter le jeu ? [y/n]")
+
+        if (exitChoice == "y"):
+            sys.exit(0)
+
+        elif (exitChoice =="n"):
+            menuMain(player)
