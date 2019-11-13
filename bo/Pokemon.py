@@ -81,7 +81,6 @@ class Pokemon:
     # Charge les compétences d'un pokémon
     def loadComp(self, poke_json):
         moves = poke_json['moves']
-        print(self)
         for comp in moves:
             if len(self.competence) == 4:
                 break
@@ -95,3 +94,5 @@ class Pokemon:
     def getDmg(self, comp_atk: Competence):
         return round(comp_atk.power/100 * self.level)
 
+    def heal(self):
+        self.hp = self.hp_max

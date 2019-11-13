@@ -1,7 +1,3 @@
-class MenuEquipe:
-
-    def __init__(self):
-        None
 
 def getEquipe(player):
     print("╔═════════════════════════════════════════════════════════╗")

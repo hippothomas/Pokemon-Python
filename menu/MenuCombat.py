@@ -90,8 +90,11 @@ def menuInventaireCombat(player):
 def combat(player: Player, adversaire):
     poke_fight = player.getFirstPokeAvailable()
     if isinstance(adversaire, Pokemon):
-        print("Un pokémon sauvage apparait ! C'est un " + adversaire.nom)
-        # TODO Ajouter le pokemon du combat au pokedex
+        adversaire.addLevel(player.getMoyenneLvlPokeRand())
+        adversaire.heal()
+        print("Un pokémon sauvage apparait ! C'est un " + adversaire.nom +
+              " de niveau " + str(adversaire.level))
+        player.addPokedex(adversaire)
         print("En avant " + poke_fight.nom)
         while True:
             error_opt = False

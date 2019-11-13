@@ -4,12 +4,6 @@ from bo.Player import Player
 from bo.Pokemon import Pokemon
 
 
-class MenuStart:
-
-    def __init__(self):
-        None
-
-
 def menuDialogueStart():
     print("                                  ,'\\\n"
           "    _.----.        ____         ,'  _\   ___    ___     ____\n"
