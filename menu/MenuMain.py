@@ -1,6 +1,7 @@
 import sys
 import time
 
+from bo.Zone import ZonePokemon
 from menu import MenuInventaire
 from menu import MenuEquipe
 from menu import MenuPokedex
@@ -45,7 +46,7 @@ def menuMain(player):
                 menuChoose = True
         except:
             print("\nVeuillez choisir une action valide")
-    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
+    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]) + "\n")
 
     if (menuChoice == 1):
         MenuInventaire.menuInventaire(player)
@@ -58,7 +59,9 @@ def menuMain(player):
         MenuPokedex.getPokedex(player)
 
     elif (menuChoice == 4):
-        MenuExplorer.menuExplorer(player)
+        zone = ZonePokemon()
+        print("Vous arrivez dans une zone ", zone.name)
+        MenuExplorer.menuExplorer(player, zone)
 
     elif (menuChoice == 5):
         print("\nSauvegarde de la partie ...")

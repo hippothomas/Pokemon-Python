@@ -20,6 +20,7 @@ def loadPlayer():
         for poke_id in pokedex:
             poke_add = Pokemon(poke_id, False)
             player.addPokedex(poke_add)
+        print("Bonjour", player.username)
     return player
 
 
