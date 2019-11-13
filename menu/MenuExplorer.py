@@ -1,5 +1,6 @@
 from bo.Zone import ZoneVille, ZonePokemon
 from menu import MenuCombat as MenuCombat
+from menu import MenuVille as MenuVille
 from menu import MenuMain as MenuMain
 
 class MenuExplorer:
@@ -51,18 +52,20 @@ def menuExplorer(player):
 
     elif (menuChoice == 2):
         zone = ZoneVille()
-        print("\nVous arrivez dans la zone : " + str(zone.name) + "\n")
+        MenuVille.menuVille(player, zone)
         MenuMain.menuMain(player)
 
     elif (menuChoice == 3):
         zone = ZonePokemon()
-        zone.getRandomPokemonByZone()
-        MenuCombat.menuCombat(player)
+        randomPokemon = zone.getRandomPokemonByZone()
+        MenuCombat.combat(player, randomPokemon)
+        menuExplorer(player)
 
     elif (menuChoice == 4):
         zone = ZonePokemon()
-        zone.getRandomDresseurByZone()
-        MenuCombat.menuCombat(player)
+        randomDresseur = zone.getRandomDresseurByZone()
+        MenuCombat.combat(player, randomDresseur)
+        menuExplorer(player)
 
     elif (menuChoice == 5):
         MenuMain.menuMain(player)

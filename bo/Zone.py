@@ -44,8 +44,6 @@ class ZonePokemon(Zone):
             rand = random.randrange(nbPokemonZone)
             randomPoke = data["zones"][self.id]["list_pokemon_id"][rand]
             pokemon = Pokemon(randomPoke)
-            print("\nUn pokémon sauvage apparait !\n")
-            print("C'est un " + pokemon.nom + " !")
             return pokemon
 
     def getRandomDresseurByZone(self):
@@ -57,5 +55,4 @@ class ZonePokemon(Zone):
             dresseur = Dresseur(randomDresseur["name"])
             for poke in randomDresseur["list_pokemon_dresseur"]:
                 dresseur.addPokeList(poke)
-            print("\n Vous entrez en combat contre le dresseur " + dresseur.name + " !")
             return dresseur
