@@ -85,10 +85,11 @@ def menuInventaireCombat(player):
             else:
                 print("Erreur ! L'item demandé n'existe pas !")
 
+
 # Menu de combat
 def combat(player: Player, adversaire):
+    poke_fight = player.getFirstPokeAvailable()
     if isinstance(adversaire, Pokemon):
-        poke_fight = player.getFirstPokeAvailable()
         print("Un pokémon sauvage apparait ! C'est un " + adversaire.nom)
         # TODO Ajouter le pokemon du combat au pokedex
         print("En avant " + poke_fight.nom)

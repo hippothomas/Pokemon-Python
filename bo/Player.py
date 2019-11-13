@@ -18,7 +18,17 @@ class Player:
 
     def addPokedex(self, pokemon):
         # TODO Check que le pokemon est pas déjà dans le pokedex
-        self.pokedex.append(pokemon)
+        id_search = pokemon.id
+        found = False
+        for poke in self.pokedex:
+            if poke.id == id_search:
+                found = True
+                break
+        if not found:
+            self.pokedex.append(pokemon)
+            return True
+        else:
+            return False
 
     def getInventaire(self):
         return self.item_list
