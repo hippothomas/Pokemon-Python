@@ -2,7 +2,16 @@
     "username": "Oof",
     "monnaie": 500,
     "item_list": [],
-    "poke_list": [],
+    "poke_list": [
+        {
+            "id": 43,
+            "hp": 8,
+            "level": 5,
+            "xp": 135,
+            "evolution": 1
+        }
+    ],
     "pokedex": [
+        43
     ]
 }

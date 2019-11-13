@@ -33,7 +33,7 @@ def menuVille(player, ville):
 
     if (menuChoice == 1):
         for pokemon in player.poke_list:
-            pokemon.hp = pokemon.hp_max
+            pokemon.heal()
         print("\nVos pokémons ont été soignés.\n")
 
     elif (menuChoice == 2):
