@@ -1,10 +1,5 @@
 from bo.Item import Item
 
-class MenuInventaire:
-
-    def __init__(self):
-        None
-
 def menuInventaire(player):
     print("\n╔══════════════════════════════╗")
     print("╠═════════ INVENTAIRE ═════════╣")

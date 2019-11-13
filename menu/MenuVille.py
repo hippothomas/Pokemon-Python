@@ -1,10 +1,3 @@
-from menu import MenuExplorer as MenuExplorer
-
-class MenuVille:
-
-    def __init__(self):
-        None
-
 def menuVille(player, ville):
     choice1 = "Soigner ses pokémons"
     choice2 = "Aller à la boutique"

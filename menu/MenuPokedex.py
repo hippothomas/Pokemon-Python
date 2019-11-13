@@ -1,10 +1,5 @@
 from menu import MenuMain
 
-class MenuPokedex:
-
-    def __init__(self):
-        None
-
 def getPokedex(player):
     displayPokedex(1, 21, player)
     pageChoose = False

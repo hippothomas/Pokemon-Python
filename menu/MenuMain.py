@@ -8,11 +8,6 @@ from menu import MenuPokedex
 from menu import MenuExplorer
 from services import playerJson
 
-class MenuMain:
-
-    def __init__(self):
-        None
-
 def menuMain(player):
     choice1 = "Inventaire"
     choice2 = "Equipe"

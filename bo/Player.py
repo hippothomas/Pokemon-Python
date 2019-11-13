@@ -1,3 +1,6 @@
+from random import randint
+
+
 class Player:
     username = ""
     poke_list = []
@@ -18,7 +21,17 @@ class Player:
 
     def addPokedex(self, pokemon):
         # TODO Check que le pokemon est pas déjà dans le pokedex
-        self.pokedex.append(pokemon)
+        id_search = pokemon.id
+        found = False
+        for poke in self.pokedex:
+            if poke.id == id_search:
+                found = True
+                break
+        if not found:
+            self.pokedex.append(pokemon)
+            return True
+        else:
+            return False
 
     def getInventaire(self):
         return self.item_list
@@ -59,3 +72,13 @@ class Player:
                 poke_return = pokemon
                 break
         return poke_return
+
+    def getMoyenneLvlPokeRand(self):
+        i = 0
+        lvl_total = 0
+        for poke in self.poke_list:
+            lvl_total = poke.level
+            i += 1
+        lvl_moyen = round(lvl_total/i)
+        rnd_lvl = randint(lvl_moyen-2, lvl_moyen+2)
+        return rnd_lvl

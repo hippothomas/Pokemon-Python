@@ -3,10 +3,6 @@ from menu import MenuCombat as MenuCombat
 from menu import MenuVille as MenuVille
 from menu import MenuMain as MenuMain
 
-class MenuExplorer:
-
-    def __init__(self):
-        None
 
 def menuExplorer(player, zone):
     choice1 = "Changer de zone"
