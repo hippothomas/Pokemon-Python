@@ -2,12 +2,6 @@ from bo.Player import Player
 from bo.Item import Item
 
 
-class MenuAchat:
-
-    def __init__(self):
-        None
-
-
 def menuAchat(player):
     pokeball = Item(4)
     superball = Item(3)
@@ -20,12 +14,12 @@ def menuAchat(player):
     print("╠══════════ BOUTIQUE ══════════╣")
     print("╠══════════════════════════════╣")
     print("║                              ║")
-    print("║   1 - " + pokeball.name + " - " + str(pokeball.cost) )
-    print("║   2 - " + superball.name + " - " + str(superball.cost) )
-    print("║   3 - " + ultraball.name + " - " + str(ultraball.cost) )
-    print("║   4 - " + potion.name + " - " + str(potion.cost) )
-    print("║   5 - " + superpotion.name + " - " + str(superpotion.cost) )
-    print("║   6 - " + hyperpotion.name + " - " + str(hyperpotion.cost) )
+    print("║   1 - " + pokeball.name + " - " + str(pokeball.cost))
+    print("║   2 - " + superball.name + " - " + str(superball.cost))
+    print("║   3 - " + ultraball.name + " - " + str(ultraball.cost))
+    print("║   4 - " + potion.name + " - " + str(potion.cost))
+    print("║   5 - " + superpotion.name + " - " + str(superpotion.cost))
+    print("║   6 - " + hyperpotion.name + " - " + str(hyperpotion.cost))
     print("║                              ║")
     print("║   7 - Quitter                ║")
     print("║                              ║")
@@ -62,6 +56,5 @@ def menuAchat(player):
 
         print("Vous venez d'acheter : " + item.name)
         print("Il vous reste : " + str(player.monnaie))
-    else :
+    else:
         print("Vous n'avez pas assez d'argent !")
-
