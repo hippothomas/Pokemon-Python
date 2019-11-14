@@ -128,6 +128,7 @@ def combat(player: Player, adversaire):
                         print("A toi " + poke_fight.nom + " !\n")
             elif opt == 4:  # FUITE
                 print("Vous ne pouvez fuire devant un dresseur !")
+                error_opt = True
 
             if poke_adversaire.hp == 0:
                 print("Vous avez battu " + poke_adversaire.nom + " de niveau " + str(poke_adversaire.level))
@@ -137,6 +138,9 @@ def combat(player: Player, adversaire):
                 numPokeTrainer = numPokeTrainer + 1
                 if numPokeTrainer + 1 > len(adversaire.poke_equipe) :
                     print("Vous avez battu " + adversaire.name)
+                    earned_gold = getGoldWin(adversaire.poke_equipe)
+                    print("Vous avez gagné " + str(earned_gold) + " €")
+                    player.monnaie+=earned_gold
                     print("Fin du combat")
                     break
                 else:
@@ -146,6 +150,11 @@ def combat(player: Player, adversaire):
             if not error_opt:
                 actionPoke(poke_adversaire, poke_fight)
 
+def getGoldWin(poke_equipe):
+    gold = 0
+    for pokemon in poke_equipe:
+        gold = gold + (pokemon.level * 5)
+    return gold
 
 def dspLifeFight(adversaire: Pokemon, poke_fight: Pokemon):
     life_adversaire = round((adversaire.hp / adversaire.hp_max) * 10)
