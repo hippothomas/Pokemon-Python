@@ -27,7 +27,7 @@ def loadPlayer():
 def savePlayer(player):
     data_player = {
         "username": player.username,
-        "monnaie": 500,
+        "monnaie": player.monnaie,
         "item_list": [],
         "poke_list": [],
         "pokedex": []

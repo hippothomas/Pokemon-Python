@@ -1,11 +1,6 @@
 from bo.Player import Player
 from bo.Item import Item
-
-
-class MenuAchat:
-
-    def __init__(self):
-        None
+from menu import MenuVille
 
 
 def menuAchat(player):
@@ -15,17 +10,19 @@ def menuAchat(player):
     potion = Item(17)
     superpotion = Item(26)
     hyperpotion = Item(25)
+    
+    print("Vous avez : " + str(player.monnaie) + "₽")
 
     print("\n╔══════════════════════════════╗")
     print("╠══════════ BOUTIQUE ══════════╣")
     print("╠══════════════════════════════╣")
     print("║                              ║")
-    print("║   1 - " + pokeball.name + " - " + str(pokeball.cost) )
-    print("║   2 - " + superball.name + " - " + str(superball.cost) )
-    print("║   3 - " + ultraball.name + " - " + str(ultraball.cost) )
-    print("║   4 - " + potion.name + " - " + str(potion.cost) )
-    print("║   5 - " + superpotion.name + " - " + str(superpotion.cost) )
-    print("║   6 - " + hyperpotion.name + " - " + str(hyperpotion.cost) )
+    print("║   1 - " + pokeball.name + " - " + str(pokeball.cost))
+    print("║   2 - " + superball.name + " - " + str(superball.cost))
+    print("║   3 - " + ultraball.name + " - " + str(ultraball.cost))
+    print("║   4 - " + potion.name + " - " + str(potion.cost))
+    print("║   5 - " + superpotion.name + " - " + str(superpotion.cost))
+    print("║   6 - " + hyperpotion.name + " - " + str(hyperpotion.cost)
     print("║                              ║")
     print("║   7 - Quitter                ║")
     print("║                              ║")
@@ -55,13 +52,14 @@ def menuAchat(player):
         item = superpotion
     elif inputChoice == 6:
         item = hyperpotion
+    else:
+        return None
 
     if player.monnaie >= item.cost:
         player.monnaie -= item.cost
         player.addInventaire(item)
 
         print("Vous venez d'acheter : " + item.name)
-        print("Il vous reste : " + str(player.monnaie))
-    else :
+        print("Il vous reste : " + str(player.monnaie) + "₽")
+    else:
         print("Vous n'avez pas assez d'argent !")
-

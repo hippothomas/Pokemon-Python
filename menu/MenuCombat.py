@@ -8,12 +8,6 @@ from bo.Pokemon import Pokemon
 from services.combat import attack
 
 
-class MenuCombat:
-
-    def __init__(self):
-        None
-
-
 # Affiche la l'inventaire et permet d'en utiliser les objets
 # @param player joueur
 # @param pokemon pokemon appartenant au joueur actuellement sur le terrain

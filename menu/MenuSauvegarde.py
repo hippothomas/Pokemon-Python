@@ -3,16 +3,14 @@ import json
 JSON_USER_PATH = "./json/user.json"
 
 
-class MenuSauvegarde:
-
-    def __init__(self):
-        None
-
-
 def checkSauvegarde():
+    if getUsernameFromJson() != "":
+        return True
+    else:
+        return False
+
+def getUsernameFromJson():
     with open(JSON_USER_PATH) as jsonFile:
         data = json.load(jsonFile)
-        if data["username"] != "":
-            return True
-        else:
-            return False
+        username = data["username"]
+        return username

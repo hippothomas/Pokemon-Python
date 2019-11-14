@@ -1,14 +1,12 @@
-from bo.Item import Item
-
 def menuInventaire(player):
     print("\n╔══════════════════════════════╗")
     print("╠═════════ INVENTAIRE ═════════╣")
     print("╠══════════════════════════════╣")
     print("║                              ║")
-    i = 0
+    i = 1
     for item in player.getInventaire():
-        item_name = Item(item[1]).name
-        print("║   " + str(i + 1) + " - " + str(item[0]) + "x" + item_name + "           ")
+        print("   - " + str(item.name) + " X1       ")
         i += 1
     print("║                              ║")
     print("╚══════════════════════════════╝\n")
+    input("Appuyez sur une touche...")

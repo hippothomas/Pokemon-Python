@@ -1,3 +1,5 @@
+import menu.MenuAchat as MenuAchat
+
 def menuVille(player, ville):
     choice1 = "Soigner ses pokémons"
     choice2 = "Aller à la boutique"
@@ -38,7 +40,7 @@ def menuVille(player, ville):
 
     elif (menuChoice == 2):
         print("\nBienvenue dans la boutique !\n")
-        # menuAchat(player)
+        MenuAchat.menuAchat(player)
 
     elif (menuChoice == 3):
         print("\nVous sortez de la ville.")
