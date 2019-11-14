@@ -13,3 +13,9 @@
 # player = Player(username)
 # starter = menu.MenuStart.menuStarter(username)
 # menu.MenuMain.menuMain(player)
+from services import playerJson
+
+player = playerJson.loadPlayer()
+print(player.poke_list[0].nom)
+print(player.poke_list[1].nom)
+playerJson.savePlayer(player)
