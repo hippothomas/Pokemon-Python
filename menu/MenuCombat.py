@@ -157,7 +157,7 @@ def dspLifeFight(adversaire: Pokemon, poke_fight: Pokemon):
 # Action du pokemon adversaire
 def actionPoke(poke_adversaire: Pokemon, poke_fight: Pokemon):
     print("Tour de l'adversaire")
-    atk = randint(0, len(poke_adversaire.competence))
+    atk = randint(0, len(poke_adversaire.competence)-1)
     attack(poke_adversaire, poke_fight, poke_adversaire.competence[atk])
 
 
