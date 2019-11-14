@@ -12,7 +12,7 @@
       "dresseurs": [
         {
          "id": 1,
-         "name": "Plainiste1",
+         "name": "Greta Thunberg, la militante",
          "list_pokemon_dresseur": [
            18,
            20,
@@ -21,7 +21,7 @@
         },
         {
          "id": 2,
-         "name": "Plainiste2",
+         "name": "Jean Dujardin, acteur et humoriste",
          "list_pokemon_dresseur": [
            77,
            83,
@@ -42,7 +42,7 @@
       "dresseurs": [
         {
          "id": 1,
-         "name": "Forestier1",
+         "name": "Mister MV, le vieux monsieur",
          "list_pokemon_dresseur": [
            1,
            2,
@@ -51,7 +51,7 @@
         },
         {
          "id": 2,
-         "name": "Forestier2",
+         "name": "Jason Momoa, le bûcheron",
          "list_pokemon_dresseur": [
            15,
            43,
@@ -72,7 +72,7 @@
       "dresseurs": [
         {
          "id": 1,
-         "name": "Plagiste1",
+         "name": "Balkany, le roi des roublards",
          "list_pokemon_dresseur": [
            1,
            2,
@@ -81,7 +81,7 @@
         },
         {
          "id": 2,
-         "name": "Plagiste2",
+         "name": "Arouf Gangsta, la frappe",
          "list_pokemon_dresseur": [
            138,
            129,
@@ -102,7 +102,7 @@
       "dresseurs": [
         {
          "id": 1,
-         "name": "Homme des grottes1",
+         "name": "Sylvain Durif, le Christ cosmique",
          "list_pokemon_dresseur": [
            76,
            68,
@@ -111,7 +111,7 @@
         },
         {
          "id": 2,
-         "name": "Homme des grottes2",
+         "name": "Fred Pierrafeu, l'homme des grottes",
          "list_pokemon_dresseur": [
            39,
            50,
@@ -123,7 +123,7 @@
     {
       "id": 5,
       "type": "ville",
-      "name": "La Joliverie",
+      "name": "San Andreas",
       "list_item": [
         "pokeball",
         "superball",
