@@ -1,6 +1,7 @@
 from bo.Item import Item
 
 from random import randint
+from bo.Item import Item
 
 
 class Player:
@@ -94,4 +95,6 @@ class Player:
             i += 1
         lvl_moyen = round(lvl_total/i)
         rnd_lvl = randint(lvl_moyen-2, lvl_moyen+2)
+        if rnd_lvl < 3:
+            return 3
         return rnd_lvl

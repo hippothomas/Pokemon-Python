@@ -8,12 +8,12 @@ from bo.Pokemon import Pokemon
 from services.combat import attack
 
 
-# Affiche la l'inventaire et permet d'en utiliser les objets
-# @param player joueur
-# @param pokemon pokemon appartenant au joueur actuellement sur le terrain
-# @param adversaire pokemon adverse
-# @return int le pokémon choisis par l'utilisateur
-def menuInventaireCombat(player, pokemon, adversaire):
+class MenuCombat:
+
+    def __init__(self):
+        None
+
+def menuInventaireCombat(player):
     print("\n╔══════════════════════════════╗")
     print("╠═════════ INVENTAIRE ═════════╣")
     print("╠══════════════════════════════╣")
@@ -64,7 +64,7 @@ def menuInventaireCombat(player, pokemon, adversaire):
                         # Réussite
                         print("Votre " + item.name + " est très éfficace !")
                         print("Vous venez de capturer ...")
-                        player.addPokeList(adversaire)
+                        # player.addPokeList(enemy)
                     else:
                         # Echec
                         print("Votre " + item.name + " n'est très pas éfficace...")
@@ -72,28 +72,26 @@ def menuInventaireCombat(player, pokemon, adversaire):
                 # Si l'item est de type potion
                 elif item.type == 2:
                     print("Vous utilisez " + item.name + "...")
-                    oldhp = pokemon.hp
-                    if (pokemon.hp + item.effect) >= 100:
-                       pokemon.hp = 100
-                    else:
-                       pokemon.hp += item.effect
-                    print("Votre pokémon vient de gagné " + str(pokemon.hp - oldhp) + "hp grâce à " + item.name)
+                    # oldhp = pokemon.hp
+                    # if (pokemon.hp + item.effect) >= 100:
+                    #    pokemon.hp = 100
+                    # else:
+                    #    pokemon.hp += item.effect
+                    # print("Votre pokémon vient de gagné " + str(pokemon.hp - oldhp) + "hp grâce à " + item.name)
 
                 # On retire 1 à la quantité de l'item utilisé
                 player.useInventaire(chooseItemId - 1)
             else:
                 print("Erreur ! L'item demandé n'existe pas !")
 
-
 # Menu de combat
 def combat(player: Player, adversaire):
-    poke_fight = player.getFirstPokeAvailable()
-    if isinstance(adversaire, Pokemon):
-        adversaire.addLevel(player.getMoyenneLvlPokeRand())
-        adversaire.heal()
-        print("Un pokémon sauvage apparait ! C'est un " + adversaire.nom +
-              " de niveau " + str(adversaire.level))
-        player.addPokedex(adversaire)
+    numPokeTrainer = 0
+    if isinstance(adversaire.poke_equipe[numPokeTrainer], Pokemon):
+        poke_fight = player.getFirstPokeAvailable()
+        print(adversaire.name + " veut se battre")
+        poke_adversaire = adversaire.poke_equipe[numPokeTrainer]
+        # TODO Ajouter le pokemon du combat au pokedex
         print("En avant " + poke_fight.nom)
         while True:
             error_opt = False
@@ -104,17 +102,18 @@ def combat(player: Player, adversaire):
                 if poke_fight.hp == 0:
                     poke_id = changePoke(player, False)
                     poke_fight = player.poke_list[poke_id]
-            dspLifeFight(adversaire, poke_fight)
+            dspLifeFight(poke_adversaire, poke_fight)
             opt = getOptionCombat()
             if opt == 1:  # ATTACK
                 opt_atk = chooseAtk(poke_fight)
                 if opt_atk == 0:
                     error_opt = True
                 else:
-                    attack(poke_fight, adversaire, poke_fight.competence[opt_atk-1])
+                    attack(poke_fight, poke_adversaire, poke_fight.competence[opt_atk-1])
                     input("")
             elif opt == 2:  # SAC
-                menuInventaireCombat(player, poke_fight, adversaire)
+                # TODO Ajouter le menu d'hippo
+                print("Sac")
             elif opt == 3:  # CHANGE POKEMON
                 if len(player.poke_list) < 2:
                     error_opt = True
@@ -128,45 +127,44 @@ def combat(player: Player, adversaire):
                         poke_fight = player.poke_list[poke_id]
                         print("A toi " + poke_fight.nom + " !\n")
             elif opt == 4:  # FUITE
-                rnd = randint(0, 100);
-                if rnd > 10:
-                    break
-                else:
-                    print("Vous n'avez pas réussi à fuir !")
+                print("Vous ne pouvez fuire devant un dresseur !")
 
-            if adversaire.hp == 0:
-                print("Vous avez battu " + adversaire.nom + " de niveau " + str(adversaire.level))
-                earned_xp = adversaire.getXpWin()
+            if poke_adversaire.hp == 0:
+                print("Vous avez battu " + poke_adversaire.nom + " de niveau " + str(poke_adversaire.level))
+                earned_xp = poke_adversaire.getXpWin()
                 print("Vous avez gagné " + str(earned_xp) + " xp")
                 poke_fight.addXp(earned_xp)
-                break
+                numPokeTrainer = numPokeTrainer + 1
+                if numPokeTrainer + 1 > len(adversaire.poke_equipe):
+                    print("Vous avez battu " + adversaire.name)
+                    print("Fin du combat")
+                    break
+                else:
+                    poke_adversaire = adversaire.poke_equipe[numPokeTrainer]
+                    print(adversaire.name + " envoie " + poke_adversaire.nom)
             # Si pas d'erreur dans le choix du joueur l'adversaire joue
             if not error_opt:
-                actionPoke(adversaire, poke_fight)
-    else:
-        print("Combat de dresseur ...")
+                actionPoke(poke_adversaire, poke_fight)
 
 
 def dspLifeFight(adversaire: Pokemon, poke_fight: Pokemon):
     life_adversaire = round((adversaire.hp / adversaire.hp_max) * 10)
-    print("\n" + adversaire.nom + " sauvage - " + "◻" * (10 - life_adversaire) + "◼" * life_adversaire)
+    print("\n" + adversaire.nom + " - " + "◻" * (10 - life_adversaire) + "◼" * life_adversaire)
     life_player = round((poke_fight.hp / poke_fight.hp_max) * 10)
     print(poke_fight.nom + " - " + "◻" * (10 - life_player) + "◼" * life_player)
+    # print("◻◼")
+    # pass
 
 
 # Action du pokemon adversaire
 def actionPoke(poke_adversaire: Pokemon, poke_fight: Pokemon):
     print("Tour de l'adversaire")
-    atk = randint(0, len(poke_adversaire.competence))
+    atk = randint(0, 3)
     attack(poke_adversaire, poke_fight, poke_adversaire.competence[atk])
 
 
-# Action du dresseur adversaire
-def actionTrainer():
-    pass
-
-
 # Affiche les attaques du pokemon en combat
+# @return int attaque choisie par l'utilisateur
 def chooseAtk(poke_atk: Pokemon):
     comp1 = poke_atk.competence[0]
     comp2 = poke_atk.competence[1]

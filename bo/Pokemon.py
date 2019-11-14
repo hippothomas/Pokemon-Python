@@ -11,6 +11,8 @@ class Pokemon:
     level = 0
     xp = 0
     evolution = 0
+    evolves_to = 0
+    evolve_lvl = 0
     base_xp = 0
     competence = []
 
@@ -21,6 +23,7 @@ class Pokemon:
     def __init__(self, id_poke, load_comp=True):
         self.id = id_poke
         pokemon_json = requests.get(self.getPokemon + str(self.id)).json()
+        self.getEvolution()
         self.nom = str(pokemon_json['name']).capitalize()
         self.evolution = 1
         self.level = 5
@@ -51,11 +54,41 @@ class Pokemon:
     # Ajoute un level à un pokemon et change son max hp
     # Si un level est spécifié change le lvl du pokemon par celui donné
     # TODO faire évoluer si besoin
-    def addLevel(self, level=None):
+    def addLevel(self, level=None, evolve=True):
+        if self.level == 100:
+            return False
         self.level += 1
         if level is not None:
             self.level = level
         self.hp_max = self.getHpByLvl()
+        if level >= self.evolve_lvl and evolve and self.evolution == 1:
+            self.evolveTo()
+
+    def evolveTo(self):
+        poke_evolution = Pokemon(self.evolves_to)
+        poke_evolution.getEvolution()
+        print("poke_evolution = " + str(poke_evolution))
+        self.id = poke_evolution.id
+        self.nom = poke_evolution.nom
+        self.base_xp = poke_evolution.base_xp
+        self.competence = poke_evolution.competence
+        self.evolve_lvl = poke_evolution.evolve_lvl
+        self.evolves_to = poke_evolution.evolves_to
+        self.evolution += 1
+        self.heal()
+        print("self after evolve = " + str(self))
+
+    def getEvolution(self):
+        poke_species = requests.get("https://pokeapi.co/api/v2/pokemon-species/" + str(self.id)).json()
+        poke_chain = requests.get(poke_species['evolution_chain']['url']).json()
+        evolve_species = requests.get(poke_chain['chain']['evolves_to'][0]['species']['url']).json()
+        self.evolve_lvl = poke_chain['chain']['evolves_to'][0]['evolution_details'][0]['min_level']
+        if self.evolve_lvl is None:
+            if self.evolution == 1:
+                self.evolve_lvl = 20
+            if self.evolution == 2:
+                self.evolve_lvl = 35
+        self.evolves_to = evolve_species['id']
 
     # ajoute de l'xp au pokemon si le montant d'xp est supérieur à celui nécessaire lvl up
     def addXp(self, amount):
@@ -89,6 +122,9 @@ class Pokemon:
                 competence = Competence(url)
                 if competence.power > 0 and len(self.competence) < 4:
                     self.competence.append(competence)
+        if len(self.competence) <= 1:
+            url = "https://pokeapi.co/api/v2/move/33/"
+            self.competence.append(Competence(url))
 
     # Retourne le nombre de dégâts que fait la compétence
     def getDmg(self, comp_atk: Competence):
