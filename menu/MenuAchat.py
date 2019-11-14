@@ -1,5 +1,6 @@
 from bo.Player import Player
 from bo.Item import Item
+from menu import MenuVille
 
 
 def menuAchat(player):
@@ -9,6 +10,8 @@ def menuAchat(player):
     potion = Item(17)
     superpotion = Item(26)
     hyperpotion = Item(25)
+
+    print("Vous avez : " + str(player.monnaie) + "₽")
 
     print("\n╔══════════════════════════════╗")
     print("╠══════════ BOUTIQUE ══════════╣")
@@ -49,12 +52,14 @@ def menuAchat(player):
         item = superpotion
     elif inputChoice == 6:
         item = hyperpotion
+    else:
+        return None
 
     if player.monnaie >= item.cost:
         player.monnaie -= item.cost
         player.addInventaire(item)
 
         print("Vous venez d'acheter : " + item.name)
-        print("Il vous reste : " + str(player.monnaie))
+        print("Il vous reste : " + str(player.monnaie) + "₽")
     else:
         print("Vous n'avez pas assez d'argent !")
