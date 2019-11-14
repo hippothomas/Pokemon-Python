@@ -135,7 +135,7 @@ def combat(player: Player, adversaire):
                 print("Vous avez gagné " + str(earned_xp) + " xp")
                 poke_fight.addXp(earned_xp)
                 numPokeTrainer = numPokeTrainer + 1
-                if numPokeTrainer + 1 > len(adversaire.poke_equipe) :
+                if numPokeTrainer + 1 > len(adversaire.poke_equipe):
                     print("Vous avez battu " + adversaire.name)
                     print("Fin du combat")
                     break

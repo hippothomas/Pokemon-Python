@@ -158,14 +158,12 @@ def dspLifeFight(adversaire: Pokemon, poke_fight: Pokemon):
     print("\n" + adversaire.nom + " sauvage - " + "◻" * (10 - life_adversaire) + "◼" * life_adversaire)
     life_player = round((poke_fight.hp / poke_fight.hp_max) * 10)
     print(poke_fight.nom + " - " + "◻" * (10 - life_player) + "◼" * life_player)
-    # print("◻◼")
-    # pass
 
 
 # Action du pokemon adversaire
 def actionPoke(poke_adversaire: Pokemon, poke_fight: Pokemon):
     print("Tour de l'adversaire")
-    atk = randint(0, 3)
+    atk = randint(0, len(poke_adversaire.competence))
     attack(poke_adversaire, poke_fight, poke_adversaire.competence[atk])
 
 
@@ -175,7 +173,6 @@ def actionTrainer():
 
 
 # Affiche les attaques du pokemon en combat
-# @return int attaque choisie par l'utilisateur
 def chooseAtk(poke_atk: Pokemon):
     comp1 = poke_atk.competence[0]
     comp2 = poke_atk.competence[1]
