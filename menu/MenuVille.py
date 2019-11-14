@@ -38,6 +38,7 @@ def menuVille(player, ville):
 
     elif (menuChoice == 2):
         print("\nBienvenue dans la boutique !\n")
+        # menuAchat(player)
 
     elif (menuChoice == 3):
         print("\nVous sortez de la ville.")
