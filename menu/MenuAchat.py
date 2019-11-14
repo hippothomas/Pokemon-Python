@@ -22,7 +22,7 @@ def menuAchat(player):
     print("║   3 - " + ultraball.name + " - " + str(ultraball.cost))
     print("║   4 - " + potion.name + " - " + str(potion.cost))
     print("║   5 - " + superpotion.name + " - " + str(superpotion.cost))
-    print("║   6 - " + hyperpotion.name + " - " + str(hyperpotion.cost)
+    print("║   6 - " + hyperpotion.name + " - " + str(hyperpotion.cost))
     print("║                              ║")
     print("║   7 - Quitter                ║")
     print("║                              ║")
