@@ -25,13 +25,13 @@ def menuVille(player, ville):
     while not menuChoose:
         try:
             menuChoice = int(input("Quel action voulez-vous faire : "))
-            if menuChoice > 2 or menuChoice <= 0:
+            if menuChoice > 3 or menuChoice < 1:
                 raise Exception()
             else:
                 menuChoose = True
         except:
             print("\nVeuillez choisir une action valide")
-    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
+    print("\nTu as choisi l'option : " + str(getChoice[menuChoice-1]))
 
     if (menuChoice == 1):
         for pokemon in player.poke_list:
