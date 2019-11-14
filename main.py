@@ -6,7 +6,7 @@ import menu.MenuSauvegarde as MenuSauvegarde
 from services import playerJson
 
 if MenuSauvegarde.checkSauvegarde():
-    print("Une sauvergarde existe déjà")
+    print("Une sauvergarde existe déjà, au nom de :", MenuSauvegarde.getUsernameFromJson())
     try:
         choix = input("Voulez-vous charger la partie existante ? [y/n]")
         if (choix == "y"):

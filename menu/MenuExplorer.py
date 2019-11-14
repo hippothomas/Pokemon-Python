@@ -49,7 +49,7 @@ def menuExplorer(player, zone):
     elif (menuChoice == 2):
         zone = ZoneVille()
         MenuVille.menuVille(player, zone)
-        MenuMain.menuMain(player)
+        menuExplorer(player, zone)
 
     elif (menuChoice == 3):
         randomPokemon = zone.getRandomPokemonByZone()

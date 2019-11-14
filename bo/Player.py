@@ -1,3 +1,5 @@
+from bo.Item import Item
+
 from random import randint
 from bo.Item import Item
 

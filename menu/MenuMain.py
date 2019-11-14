@@ -50,6 +50,7 @@ def menuMain(player):
 
     if (menuChoice == 1):
         MenuInventaire.menuInventaire(player)
+        menuMain(player)
 
     elif (menuChoice == 2):
         MenuEquipe.getEquipe(player)
