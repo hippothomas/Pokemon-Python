@@ -1,3 +1,5 @@
+from bo.Item import Item
+
 from random import randint
 
 
@@ -40,7 +42,16 @@ class Player:
         self.item_list = list
 
     def addInventaire(self, item):
-        self.item_list.extend(item)
+        exist = False
+        i = 0
+        for it in self.item_list:
+            if Item(it[1]) == item:
+                exist = True
+                self.item_list[i][0] = self.item_list[i][0] + 1
+            i += 1
+
+        if exist == False :
+            self.item_list.append(item)
 
     def existInventaire(self, id):
         if 0 < id <= len(self.item_list):

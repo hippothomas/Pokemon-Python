@@ -14,7 +14,12 @@ class MenuCombat:
         None
 
 
-def menuInventaireCombat(player):
+# Affiche la l'inventaire et permet d'en utiliser les objets
+# @param player joueur
+# @param pokemon pokemon appartenant au joueur actuellement sur le terrain
+# @param adversaire pokemon adverse
+# @return int le pokémon choisis par l'utilisateur
+def menuInventaireCombat(player, pokemon, adversaire):
     print("\n╔══════════════════════════════╗")
     print("╠═════════ INVENTAIRE ═════════╣")
     print("╠══════════════════════════════╣")
@@ -65,7 +70,7 @@ def menuInventaireCombat(player):
                         # Réussite
                         print("Votre " + item.name + " est très éfficace !")
                         print("Vous venez de capturer ...")
-                        # player.addPokeList(enemy)
+                        player.addPokeList(adversaire)
                     else:
                         # Echec
                         print("Votre " + item.name + " n'est très pas éfficace...")
@@ -73,12 +78,12 @@ def menuInventaireCombat(player):
                 # Si l'item est de type potion
                 elif item.type == 2:
                     print("Vous utilisez " + item.name + "...")
-                    # oldhp = pokemon.hp
-                    # if (pokemon.hp + item.effect) >= 100:
-                    #    pokemon.hp = 100
-                    # else:
-                    #    pokemon.hp += item.effect
-                    # print("Votre pokémon vient de gagné " + str(pokemon.hp - oldhp) + "hp grâce à " + item.name)
+                    oldhp = pokemon.hp
+                    if (pokemon.hp + item.effect) >= 100:
+                       pokemon.hp = 100
+                    else:
+                       pokemon.hp += item.effect
+                    print("Votre pokémon vient de gagné " + str(pokemon.hp - oldhp) + "hp grâce à " + item.name)
 
                 # On retire 1 à la quantité de l'item utilisé
                 player.useInventaire(chooseItemId - 1)
@@ -115,8 +120,7 @@ def combat(player: Player, adversaire):
                     attack(poke_fight, adversaire, poke_fight.competence[opt_atk-1])
                     input("")
             elif opt == 2:  # SAC
-                # TODO Ajouter le menu d'hippo
-                print("Sac")
+                menuInventaireCombat(player, poke_fight, adversaire)
             elif opt == 3:  # CHANGE POKEMON
                 if len(player.poke_list) < 2:
                     error_opt = True
