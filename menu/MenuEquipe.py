@@ -7,7 +7,7 @@ def getEquipe(player):
             "Nom : " + player.poke_list[i].nom + " | HP : " + str(player.poke_list[i].hp) + " | Niveau : " + str(
                 player.poke_list[i].level)) + " " * (22 - len(player.poke_list[i].nom)) + "║")
     print("╚═════════════════════════════════════════════════════════╝\n")
-
+    print("Appuyer sur entrée...\n")
     try:
         int(input(""))
     except:

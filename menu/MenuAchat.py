@@ -1,6 +1,4 @@
-from bo.Player import Player
 from bo.Item import Item
-from menu import MenuVille
 
 
 def menuAchat(player):
