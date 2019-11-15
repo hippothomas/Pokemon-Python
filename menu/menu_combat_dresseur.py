@@ -113,8 +113,15 @@ def combat(player: Player, adversaire):
                     attack(poke_fight, poke_adversaire, poke_fight.competence[opt_atk-1])
                     input("")
             elif opt == 2:  # SAC
-                # TODO Ajouter le menu d'hippo
-                print("Sac")
+                if len(player.item_list) < 1:
+                    print("Vous n'avez pas d'items à utiliser")
+                    error_opt = True
+                else:
+                    opt_item = menuInventaireCombat(player, poke_fight, poke_adversaire)
+                    if opt_item == "captured":
+                        break
+                    if not opt_item:
+                        error_opt = True
             elif opt == 3:  # CHANGE POKEMON
                 if len(player.poke_list) < 2:
                     error_opt = True

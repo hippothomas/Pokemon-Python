@@ -1,44 +1,26 @@
 {
-    "username": "Jean-Michel-Casu",
-    "monnaie": 500,
-    "item_list": [
-        17,
-        17
-    ],
+    "username": "Bastou",
+    "monnaie": 100,
+    "item_list": [],
     "poke_list": [
         {
             "id": 147,
-            "hp": 18,
-            "level": 12,
-            "xp": 179,
-            "evolution": 1
-        },
-        {
-            "id": 1,
-            "hp": 18,
-            "level": 12,
-            "xp": 135,
-            "evolution": 1
-        },
-        {
-            "id": 54,
-            "hp": 20,
-            "level": 13,
-            "xp": 135,
+            "hp": 4,
+            "level": 5,
+            "xp": 176,
             "evolution": 1
         },
         {
             "id": 69,
-            "hp": 18,
-            "level": 12,
+            "hp": 2,
+            "level": 5,
             "xp": 135,
             "evolution": 1
         }
     ],
     "pokedex": [
         147,
-        19,
-        54,
+        60,
         69
     ]
 }
