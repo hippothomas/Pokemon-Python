@@ -1,11 +1,9 @@
 {
     "username": "Jean-Michel-Casu",
-    "monnaie": 100,
+    "monnaie": 500,
     "item_list": [
-        4,
         17,
-        17,
-        4
+        17
     ],
     "poke_list": [
         {
@@ -21,10 +19,26 @@
             "level": 12,
             "xp": 135,
             "evolution": 1
+        },
+        {
+            "id": 54,
+            "hp": 20,
+            "level": 13,
+            "xp": 135,
+            "evolution": 1
+        },
+        {
+            "id": 69,
+            "hp": 18,
+            "level": 12,
+            "xp": 135,
+            "evolution": 1
         }
     ],
     "pokedex": [
         147,
-        19
+        19,
+        54,
+        69
     ]
 }

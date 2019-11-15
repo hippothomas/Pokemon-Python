@@ -14,6 +14,7 @@ from services.combat import attack
 # @param adversaire pokemon adverse
 # @return int le pokémon choisis par l'utilisateur
 def menuInventaireCombat(player: Player, pokemon: Pokemon, adversaire: Pokemon, use_pokeball=True):
+    captured = False
     print("\n╔══════════════════════════════╗")
     print("╠═════════ INVENTAIRE ═════════╣")
     print("╠══════════════════════════════╣")
@@ -65,8 +66,9 @@ def menuInventaireCombat(player: Player, pokemon: Pokemon, adversaire: Pokemon, 
                     if rnd <= item.effect:
                         # Réussite
                         print("Votre " + item.name + " est très éfficace !")
-                        print("Vous venez de capturer ...")
+                        print("Vous venez de capturer " + adversaire.nom)
                         player.addPokeList(adversaire)
+                        captured = True
                     else:
                         # Echec
                         print("Votre " + item.name + " n'est très pas éfficace...")
@@ -83,6 +85,8 @@ def menuInventaireCombat(player: Player, pokemon: Pokemon, adversaire: Pokemon, 
 
                 # On retire 1 à la quantité de l'item utilisé
                 player.useInventaire(chooseItemId - 1)
+                if captured:
+                    return "captured"
             else:
                 print("Erreur ! L'item demandé n'existe pas !")
 
@@ -122,6 +126,8 @@ def combat(player: Player, adversaire):
                     error_opt = True
                 else:
                     opt_item = menuInventaireCombat(player, poke_fight, adversaire)
+                    if opt_item == "captured":
+                        break
                     if not opt_item:
                         error_opt = True
             elif opt == 3:  # CHANGE POKEMON
