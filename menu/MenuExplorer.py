@@ -1,10 +1,14 @@
 from bo.Zone import ZoneVille, ZonePokemon
-from menu import MenuCombat as MenuCombat
+from menu import MenuCombat as MenuCombat, menu_combat_dresseur
 from menu import MenuVille as MenuVille
 from menu import MenuMain as MenuMain
 
 
 def menuExplorer(player, zone):
+
+    if isinstance(zone, ZoneVille):
+        zone = ZonePokemon()
+
     choice1 = "Changer de zone"
     choice2 = "Aller en ville"
     choice3 = "Chasser des pokémons"
@@ -39,7 +43,7 @@ def menuExplorer(player, zone):
                 menuChoose = True
         except:
             print("\nVeuillez choisir une action valide")
-    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
+    # print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]))
 
     if (menuChoice == 1):
         zone = ZonePokemon()
@@ -58,7 +62,7 @@ def menuExplorer(player, zone):
 
     elif (menuChoice == 4):
         randomDresseur = zone.getRandomDresseurByZone()
-        MenuCombat.combat(player, randomDresseur)
+        menu_combat_dresseur.combat(player, randomDresseur)
         menuExplorer(player, zone)
 
     elif (menuChoice == 5):

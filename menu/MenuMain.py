@@ -46,7 +46,7 @@ def menuMain(player):
                 menuChoose = True
         except:
             print("\nVeuillez choisir une action valide")
-    print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]) + "\n")
+    # print("\nTu as choisi l'option : " + str(getChoice[menuChoice - 1]) + "\n")
 
     if (menuChoice == 1):
         MenuInventaire.menuInventaire(player)
@@ -76,6 +76,5 @@ def menuMain(player):
 
         if (exitChoice == "y"):
             sys.exit(0)
-
-        elif (exitChoice =="n"):
+        else:
             menuMain(player)

@@ -1,19 +1,24 @@
 {
-    "username": "Oof",
-    "monnaie": 300,
-    "item_list": [],
+    "username": "Jean-Michel-Casu",
+    "monnaie": 100,
+    "item_list": [
+        4,
+        17,
+        17,
+        4
+    ],
     "poke_list": [
         {
             "id": 147,
-            "hp": 4,
-            "level": 6,
+            "hp": 18,
+            "level": 12,
             "xp": 179,
             "evolution": 1
         },
         {
             "id": 1,
-            "hp": 8,
-            "level": 5,
+            "hp": 18,
+            "level": 12,
             "xp": 135,
             "evolution": 1
         }

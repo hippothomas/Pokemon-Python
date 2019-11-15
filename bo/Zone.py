@@ -2,6 +2,7 @@ import json
 import random
 from bo.Pokemon import Pokemon
 from bo.Dresseur import Dresseur
+from bo.Trainer import Trainer
 
 JSON_ZONE_PATH = "./json/zone.json"
 NOMBRE_ZONES_JSON = 5
@@ -52,7 +53,7 @@ class ZonePokemon(Zone):
             nbDresseurZone = len(data["zones"][self.id]["dresseurs"])
             rand = random.randrange(nbDresseurZone)
             randomDresseur = data["zones"][self.id]["dresseurs"][rand]
-            dresseur = Dresseur(randomDresseur["name"])
+            dresseur = Trainer(randomDresseur["name"])
             for poke in randomDresseur["list_pokemon_dresseur"]:
-                dresseur.addPokeList(poke)
+                dresseur.addPokeEquipe(Pokemon(poke))
             return dresseur

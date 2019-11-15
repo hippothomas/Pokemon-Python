@@ -87,6 +87,7 @@ def menuInventaireCombat(player):
 # Menu de combat
 def combat(player: Player, adversaire):
     numPokeTrainer = 0
+    print("Start Fight")
     if isinstance(adversaire.poke_equipe[numPokeTrainer], Pokemon):
         poke_fight = player.getFirstPokeAvailable()
         print(adversaire.name + " veut se battre")

@@ -64,9 +64,7 @@ class Player:
 
     # Utilise un des item de l'inventaire
     def useInventaire(self, id):
-        self.item_list[id][0] = self.item_list[id][0] - 1
-        if self.item_list[id][0] == 0:
-            self.removeFromInventaire(id)
+        self.removeFromInventaire(id)
 
     # Permet de supprimer un item de la l'inventaire
     def removeFromInventaire(self, id):
@@ -91,7 +89,7 @@ class Player:
         i = 0
         lvl_total = 0
         for poke in self.poke_list:
-            lvl_total = poke.level
+            lvl_total += poke.level
             i += 1
         lvl_moyen = round(lvl_total/i)
         rnd_lvl = randint(lvl_moyen-2, lvl_moyen+2)

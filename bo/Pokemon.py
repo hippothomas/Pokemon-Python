@@ -128,5 +128,10 @@ class Pokemon:
     def getDmg(self, comp_atk: Competence):
         return round(comp_atk.power/100 * self.level)
 
-    def heal(self):
+    def heal(self, amount=None):
+        if amount is not None:
+            if amount + self.hp > self.hp_max:
+                self.heal()
+            else:
+                self.hp += amount
         self.hp = self.hp_max

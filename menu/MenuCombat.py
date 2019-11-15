@@ -2,7 +2,7 @@ import random
 
 from random import randint
 from bo.Item import Item
-from menu import MenuMain as MenuMain
+from menu import MenuMain as MenuMain, menu_combat_dresseur
 from bo import Player
 from bo.Pokemon import Pokemon
 from services.combat import attack
@@ -13,15 +13,14 @@ from services.combat import attack
 # @param pokemon pokemon appartenant au joueur actuellement sur le terrain
 # @param adversaire pokemon adverse
 # @return int le pokémon choisis par l'utilisateur
-def menuInventaireCombat(player, pokemon, adversaire):
+def menuInventaireCombat(player: Player, pokemon: Pokemon, adversaire: Pokemon, use_pokeball=True):
     print("\n╔══════════════════════════════╗")
     print("╠═════════ INVENTAIRE ═════════╣")
     print("╠══════════════════════════════╣")
     print("║                              ║")
     i = 0
     for item in player.getInventaire():
-        item_name = Item(item[1]).name
-        print("║   " + str(i + 1) + " - " + str(item[0]) + "x" + item_name + "           ")
+        print("║   " + str(i + 1) + " - " + item.name + "           ")
         i += 1
     print("║                              ║")
     print("║   1 - Utiliser un objet      ║")
@@ -55,8 +54,11 @@ def menuInventaireCombat(player, pokemon, adversaire):
             if player.existInventaire(chooseItemId):
                 chooseItem = True
                 inventaire = player.getInventaire()
-                item = Item(inventaire[chooseItemId - 1][1])
+                item = player.item_list[chooseItemId - 1]
                 # Si l'item est de type pokeball
+                if item.type == 1 and not use_pokeball:
+                    print("Vous ne pouvez pas capturer les pokémons de votre adversaire !")
+                    return False
                 if item.type == 1:
                     rnd = random.randint(0, 100);
                     # Test si la capture du pokémon est efficace
@@ -74,9 +76,9 @@ def menuInventaireCombat(player, pokemon, adversaire):
                     print("Vous utilisez " + item.name + "...")
                     oldhp = pokemon.hp
                     if (pokemon.hp + item.effect) >= 100:
-                       pokemon.hp = 100
+                        pokemon.hp = 100
                     else:
-                       pokemon.hp += item.effect
+                        pokemon.heal( item.effect)
                     print("Votre pokémon vient de gagné " + str(pokemon.hp - oldhp) + "hp grâce à " + item.name)
 
                 # On retire 1 à la quantité de l'item utilisé
@@ -87,6 +89,7 @@ def menuInventaireCombat(player, pokemon, adversaire):
 
 # Menu de combat
 def combat(player: Player, adversaire):
+    player.getInventaire()
     poke_fight = player.getFirstPokeAvailable()
     if isinstance(adversaire, Pokemon):
         adversaire.addLevel(player.getMoyenneLvlPokeRand())
@@ -114,7 +117,13 @@ def combat(player: Player, adversaire):
                     attack(poke_fight, adversaire, poke_fight.competence[opt_atk-1])
                     input("")
             elif opt == 2:  # SAC
-                menuInventaireCombat(player, poke_fight, adversaire)
+                if len(player.item_list) < 1:
+                    print("Vous n'avez pas d'items à utiliser")
+                    error_opt = True
+                else:
+                    opt_item = menuInventaireCombat(player, poke_fight, adversaire)
+                    if not opt_item:
+                        error_opt = True
             elif opt == 3:  # CHANGE POKEMON
                 if len(player.poke_list) < 2:
                     error_opt = True
@@ -145,6 +154,7 @@ def combat(player: Player, adversaire):
                 actionPoke(adversaire, poke_fight)
     else:
         print("Combat de dresseur ...")
+        menu_combat_dresseur.combat(player, adversaire)
 
 
 def dspLifeFight(adversaire: Pokemon, poke_fight: Pokemon):
