@@ -1,5 +1,6 @@
 import menu.MenuAchat as MenuAchat
 
+
 def menuVille(player, ville):
     choice1 = "Soigner ses pokémons"
     choice2 = "Aller à la boutique"
